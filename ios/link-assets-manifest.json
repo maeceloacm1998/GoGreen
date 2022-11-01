@@ -1,0 +1,33 @@
+{
+  "migIndex": 1,
+  "data": [
+    {
+      "path": "src/assets/fonts/Jost-Bold.ttf",
+      "sha1": "15c306309ab5e093c973fab0ba1ef88a7012cc2d"
+    },
+    {
+      "path": "src/assets/fonts/Jost-Medium.ttf",
+      "sha1": "7e9d55841807a5eeb3ba6a1dfb0607b8a72742c7"
+    },
+    {
+      "path": "src/assets/fonts/Jost-Regular.ttf",
+      "sha1": "b22e9ed8eb939a7d7f4c4044f94e981ff57818e6"
+    },
+    {
+      "path": "src/assets/fonts/Jost-SemiBold.ttf",
+      "sha1": "04165a9fe78bef66820e3c57dd19cb9b40bcbd88"
+    },
+    {
+      "path": "src/assets/fonts/Roboto-Bold.ttf",
+      "sha1": "62442a18a9fe9457c1afeabf683d263a691b7798"
+    },
+    {
+      "path": "src/assets/fonts/Roboto-Medium.ttf",
+      "sha1": "3c6a09fcc6a454924c81af7dff94fc6d399ed79b"
+    },
+    {
+      "path": "src/assets/fonts/Roboto-Regular.ttf",
+      "sha1": "56c5c0d38bde4c1f1549dda43db37b09c608aad3"
+    }
+  ]
+}

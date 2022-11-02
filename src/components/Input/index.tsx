@@ -1,15 +1,29 @@
 import React from 'react';
-import {Text, View, TextInputProps} from 'react-native';
+import {TextInputProps} from 'react-native';
 import {TextInputCustom} from './styled';
 
-export interface InputTypes extends TextInputProps {}
+export interface InputTypes extends TextInputProps {
+  marginTop?: number;
+  marginBottom?: number;
+  marginLeft?: number;
+  marginRight?: number;
+}
 
-const Input = ({...rest}: InputTypes) => {
+const Input = ({
+  marginTop,
+  marginBottom,
+  marginLeft,
+  marginRight,
+  ...rest
+}: InputTypes) => {
   return (
-    <View>
-      <Text>Input</Text>
-      <TextInputCustom {...rest} />
-    </View>
+    <TextInputCustom
+      marginTop={marginTop}
+      marginBottom={marginBottom}
+      marginLeft={marginLeft}
+      marginRight={marginRight}
+      {...rest}
+    />
   );
 };
 

@@ -1,18 +1,12 @@
 import React from 'react';
 import {Text, View} from 'react-native';
-
-import {
-  Colors,
-  DebugInstructions,
-  Header,
-  LearnMoreLinks,
-  ReloadInstructions,
-} from 'react-native/Libraries/NewAppScreen';
+import Input from './src/components/Input';
 
 const App = () => {
   return (
     <View>
-      <Text>Dale</Text>
+      <Text>Teste de componentes</Text>
+      <Input />
     </View>
   );
 };

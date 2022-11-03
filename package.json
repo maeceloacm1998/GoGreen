@@ -10,6 +10,7 @@
     "lint": "eslint . --ext .js,.jsx,.ts,.tsx"
   },
   "dependencies": {
+    "@react-native-community/checkbox": "^0.5.13",
     "@react-navigation/native": "^6.0.13",
     "@types/styled-components": "^5.1.26",
     "@types/styled-components-react-native": "^5.1.3",

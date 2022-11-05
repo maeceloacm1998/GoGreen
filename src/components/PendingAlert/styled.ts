@@ -74,8 +74,8 @@ export const Status = styled.View`
 `;
 
 export const StatusText = styled.Text`
-  font-size: 12px;
-  font-family: ${themes.fonts.jost_medium};
-  font-weight: 600;
+  font-size: 13px;
+  font-family: ${themes.fonts.jost_regular};
+  font-weight: 700;
   color: ${themes.color.text_color};
 `;

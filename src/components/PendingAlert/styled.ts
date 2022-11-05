@@ -75,7 +75,6 @@ export const Status = styled.View`
 
 export const StatusText = styled.Text`
   font-size: 12px;
-  margin-left: 5px;
   font-family: ${themes.fonts.jost_medium};
   font-weight: 600;
   color: ${themes.color.text_color};

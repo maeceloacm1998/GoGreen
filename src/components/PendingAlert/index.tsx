@@ -1,7 +1,10 @@
 import React from 'react';
+import Lottie from 'lottie-react-native';
 
 import Images from '../../assets//images/test.png';
 import {TitleText} from '../Card/styled';
+
+import Animation from "../../assets/animations/status.json"
 
 import {
   AddressText,
@@ -10,7 +13,6 @@ import {
   Image,
   Information,
   InformationContainer,
-  Status,
   StatusContainer,
   StatusText,
 } from './styled';
@@ -58,7 +60,7 @@ const PendingALert = (props: PendingAlertType) => {
         </Information>
       </InformationContainer>
       <StatusContainer>
-        <Status />
+        <Lottie source={Animation} autoPlay loop style={{width: 30, height:30}} />
         <StatusText>Pendente...</StatusText>
       </StatusContainer>
     </Container>

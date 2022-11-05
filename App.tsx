@@ -3,6 +3,7 @@ import {Text, View} from 'react-native';
 import Card from './src/components/Card';
 import CheckboxComponent from './src/components/Checkbox';
 import Input from './src/components/Input';
+import PendingALert from './src/components/PendingAlert';
 
 const App = () => {
   return (
@@ -18,6 +19,8 @@ const App = () => {
       />
       <Text>Checkbox</Text>
       <CheckboxComponent />
+      <Text>Alert</Text>
+      <PendingALert />
     </View>
   );
 };

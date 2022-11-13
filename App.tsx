@@ -3,8 +3,11 @@ import {Text, View} from 'react-native';
 import Card from './src/components/Card';
 import CheckboxComponent from './src/components/Checkbox';
 import Input from './src/components/Input';
+import InputWithIcon from './src/components/InputWithIcon';
 import PendingALert from './src/components/PendingAlert';
 import SelectListComponent from './src/components/SelectList';
+import Icon from 'react-native-vector-icons/MaterialIcons';
+import themes from './src/themes/themes';
 
 const App = () => {
   function dale(item: string) {
@@ -29,8 +32,13 @@ const App = () => {
       <CheckboxComponent />
       <Text>Alert</Text>
       <PendingALert />
-
+      <Text>SelectList</Text>
       <SelectListComponent selectedItem={dale} data={data} />
+      <Text>InputIcon</Text>
+      <InputWithIcon
+        icon={<Icon name="search" size={20} color={themes.color.primary} />}
+        placeholder="Buscando por uma empresa?"
+      />
     </View>
   );
 };

@@ -71,6 +71,8 @@ function ButtonNavigation() {
         tabBarStyle: {
           backgroundColor: themes.color.white,
           height: 57,
+          borderTopStartRadius: 20,
+          borderTopEndRadius: 20,
         },
         tabBarItemStyle: {
           margin: 5,

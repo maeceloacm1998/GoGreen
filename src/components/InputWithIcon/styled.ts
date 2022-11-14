@@ -10,7 +10,6 @@ export type TextInputCustomType = {
 
 export const Container = styled.View<TextInputCustomType>`
   height: 48px;
-  width: 100%;
   flex-direction: row;
   align-items: center;
   border-radius: 5px;

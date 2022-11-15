@@ -8,7 +8,9 @@ export type ScreenProps = {
 };
 
 export type StackParamsList = {
+  InitialRouteUser: any
   Home: any;
   Schedule: any;
   Profile: any;
+  FilterList: any;
 };

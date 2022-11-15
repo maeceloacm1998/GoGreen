@@ -19,7 +19,6 @@ const FilterList = ({navigation}: ScreenProps) => {
 
   useFocusEffect(() => {
     fetchFilterList();
-    handleLoading(false);
   });
 
   async function fetchFilterList() {
@@ -28,6 +27,7 @@ const FilterList = ({navigation}: ScreenProps) => {
 
     isEmptyList(req);
     setFilterList(req);
+    handleLoading(false);
   }
 
   function HandleCheckBox(title: string) {

@@ -8,14 +8,26 @@ import themes from '../../../../../themes/themes';
 
 import {ButtonFilter, FilterContainer, FilterText} from './styled';
 
-const FilterBar = () => {
+export type FilterBarProps = {
+  onClickFilterButton: () => void;
+};
+
+const checkProps = (props: FilterBarProps) => ({
+  onClickFilterButton: props.onClickFilterButton
+    ? props.onClickFilterButton
+    : () => {},
+});
+
+const FilterBar = (props: FilterBarProps) => {
+  const {onClickFilterButton} = checkProps(props);
+
   return (
     <FilterContainer>
       <InputWithIcon
         icon={<Icon name="search" size={18} color={themes.color.text_color} />}
         placeholder="Buscando por uma empresa?"
       />
-      <ButtonFilter activeOpacity={0.7}>
+      <ButtonFilter activeOpacity={0.7} onPress={onClickFilterButton}>
         <Icon name="filter-list" size={18} color={themes.color.white} />
         <FilterText>Filter</FilterText>
       </ButtonFilter>

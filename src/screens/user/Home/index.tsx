@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, {useState} from 'react';
 import {FlatList} from 'react-native';
 
 import Header from './components/Header';
@@ -10,6 +10,7 @@ import {CompaniesListModel} from '../../../models/CompaniesListModel';
 import {ScreenProps} from '../../../router/models/ScreenPropsModel';
 
 import {Container, HeaderText, TitleDark, TitleLight} from './styled';
+import {useFocusEffect} from '@react-navigation/native';
 
 const Home = ({navigation}: ScreenProps) => {
   const navigateFilterList = () => navigation.navigate('FilterList');
@@ -18,9 +19,9 @@ const Home = ({navigation}: ScreenProps) => {
     [],
   );
 
-  useEffect(() => {
+  useFocusEffect(() => {
     fetchCompaniesList();
-  }, []);
+  });
 
   async function fetchCompaniesList() {
     const req = await getCompaniesList();

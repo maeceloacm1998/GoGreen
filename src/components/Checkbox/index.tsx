@@ -14,8 +14,10 @@ export interface CheckboxType extends CheckBoxProps {
 }
 
 const checkProps = (props: CheckboxType) => ({
-  title: props.title ? props.title : "default",
-  defaultValueCheckbox: props.defaultValueCheckbox ? props.defaultValueCheckbox : false,
+  title: props.title ? props.title : 'default',
+  defaultValueCheckbox: props.defaultValueCheckbox
+    ? props.defaultValueCheckbox
+    : false,
   marginTop: props.marginTop ? props.marginTop : 0,
   marginBottom: props.marginBottom ? props.marginBottom : 0,
   marginLeft: props.marginLeft ? props.marginLeft : 0,
@@ -23,7 +25,14 @@ const checkProps = (props: CheckboxType) => ({
 });
 
 const CheckboxComponent = (props: CheckboxType) => {
-  const {title, defaultValueCheckbox ,marginTop, marginBottom, marginLeft, marginRight} = checkProps(props);
+  const {
+    title,
+    defaultValueCheckbox,
+    marginTop,
+    marginBottom,
+    marginLeft,
+    marginRight,
+  } = checkProps(props);
 
   const [toggleCheckBox, setToggleCheckBox] = useState(defaultValueCheckbox);
 
@@ -35,7 +44,10 @@ const CheckboxComponent = (props: CheckboxType) => {
       marginRight={marginRight}>
       <Title>{title}</Title>
       <CheckBox
-        tintColors={{true: themes.color.primary_dark, false: themes.color.text_color}}
+        tintColors={{
+          true: themes.color.primary_dark,
+          false: themes.color.text_color,
+        }}
         value={toggleCheckBox}
         onValueChange={newValue => setToggleCheckBox(newValue)}
         {...props}

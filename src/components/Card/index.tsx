@@ -18,6 +18,10 @@ export type CardType = {
   addressText: string;
   categoryText: string;
   onClick?: () => void;
+  marginTop?: number;
+  marginBottom?: number;
+  marginLeft?: number;
+  marginRight?: number;
 };
 
 import Test from '../../assets/images/test.png';
@@ -29,12 +33,32 @@ const translate = (props: CardType) => ({
   addressText: props.addressText ? props.addressText : 'default',
   categoryText: props.categoryText ? props.categoryText : 'default',
   onClick: props.onClick ? props.onClick : () => {},
+  marginTop: props.marginTop ? props.marginTop : 0,
+  marginBottom: props.marginBottom ? props.marginBottom : 0,
+  marginLeft: props.marginLeft ? props.marginLeft : 0,
+  marginRight: props.marginRight ? props.marginRight : 0,
 });
 
 const Card = (props: CardType) => {
-  const {image, title, addressText, categoryText, onClick} = translate(props);
+  const {
+    image,
+    title,
+    addressText,
+    categoryText,
+    onClick,
+    marginBottom,
+    marginLeft,
+    marginRight,
+    marginTop,
+  } = translate(props);
   return (
-    <CardContainer activeOpacity={0.7} onPress={onClick}>
+    <CardContainer
+      activeOpacity={0.7}
+      onPress={onClick}
+      marginTop={marginTop}
+      marginBottom={marginBottom}
+      marginLeft={marginLeft}
+      marginRight={marginRight}>
       <Container>
         <ImageCustom source={image} />
         <ContainerData>

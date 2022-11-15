@@ -9,11 +9,13 @@ import Profile from '../../screens/user/Profile';
 import Icon from 'react-native-vector-icons/Ionicons';
 import themes from '../../themes/themes';
 import {screensName} from '../constants';
-import {TextOption} from './styled';
+import {ContainerIcon, TextOption} from './styled';
+import {View} from 'react-native';
 
 export type HandleIconAndColorType = {
   iconName: string;
-  color: string;
+  iconColor: string;
+  backgroundColor: string;
 };
 
 const Tab = createBottomTabNavigator();
@@ -23,34 +25,39 @@ function handleIconAndColor(
   focused: boolean,
 ): HandleIconAndColorType {
   let iconName = 'hourglass-empty';
-  let color = themes.color.primary;
+  let iconColor = themes.color.primary;
+  let backgroundColor = themes.color.white;
 
   switch (route.name) {
     case screensName.Home: {
       iconName = focused ? 'home' : 'home-outline';
-      color = focused ? themes.color.primary_dark : themes.color.primary;
+      iconColor = focused ? themes.color.white : themes.color.primary;
+      backgroundColor = focused ? themes.color.primary : themes.color.white;
       break;
     }
     case screensName.Schedule: {
       iconName = focused ? 'ios-list-circle-sharp' : 'ios-list-circle-outline';
-      color = focused ? themes.color.primary_dark : themes.color.primary;
+      iconColor = focused ? themes.color.white : themes.color.primary;
+      backgroundColor = focused ? themes.color.primary : themes.color.white;
       break;
     }
     case screensName.Profile: {
       iconName = focused ? 'person-circle' : 'person-circle-outline';
-      color = focused ? themes.color.primary_dark : themes.color.primary;
+      iconColor = focused ? themes.color.white : themes.color.primary;
+      backgroundColor = focused ? themes.color.primary : themes.color.white;
       break;
     }
   }
 
   return {
     iconName,
-    color,
+    iconColor,
+    backgroundColor,
   };
 }
 
 function ButtonNavigation() {
-  const iconSize = 23;
+  const iconSize = 20;
 
   return (
     <Tab.Navigator
@@ -58,27 +65,26 @@ function ButtonNavigation() {
         tabBarIcon: ({focused}) => {
           let getIconAndColor = handleIconAndColor(route, focused);
           return (
-            <Icon
-              name={getIconAndColor.iconName}
-              size={iconSize}
-              color={getIconAndColor.color}
-            />
+            <ContainerIcon color={getIconAndColor.backgroundColor}>
+              <Icon
+                name={getIconAndColor.iconName}
+                size={iconSize}
+                color={getIconAndColor.iconColor}
+              />
+              <TextOption focused={focused} color={getIconAndColor.iconColor}>
+                {route.name}
+              </TextOption>
+            </ContainerIcon>
           );
         },
-        tabBarLabel: ({focused}) => (
-          <TextOption focused={focused}>{route.name}</TextOption>
-        ),
+        tabBarLabel: ({focused}) => <TextOption focused={focused}></TextOption>,
         tabBarStyle: {
           backgroundColor: themes.color.white,
-          height: 57,
-          borderTopStartRadius: 20,
-          borderTopEndRadius: 20,
+          height: 55,
+          marginBottom: 10,
+          marginHorizontal: 16,
+          borderRadius: 15,
         },
-        tabBarItemStyle: {
-          margin: 5,
-        },
-        tabBarActiveTintColor: themes.color.primary_dark,
-        tabBarInactiveTintColor: themes.color.primary,
       })}>
       <Tab.Screen
         name={screensName.Home}

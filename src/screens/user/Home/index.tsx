@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import {FlatList} from 'react-native';
 
 import Header from './components/Header';
@@ -10,22 +10,40 @@ import {CompaniesListModel} from '../../../models/CompaniesListModel';
 import {ScreenProps} from '../../../router/models/ScreenPropsModel';
 
 import {Container, HeaderText, TitleDark, TitleLight} from './styled';
-import {useFocusEffect} from '@react-navigation/native';
+import Loading from '../../../components/Loading';
 
 const Home = ({navigation}: ScreenProps) => {
   const navigateFilterList = () => navigation.navigate('FilterList');
+  const [loading, setLoading] = useState<boolean>(false);
+  const [error, setError] = useState<boolean>(false);
 
   const [companiesList, setCompaniesList] = useState<Array<CompaniesListModel>>(
     [],
   );
 
-  useFocusEffect(() => {
+  useEffect(() => {
     fetchCompaniesList();
-  });
+  }, []);
 
   async function fetchCompaniesList() {
+    handleLoading(true);
     const req = await getCompaniesList();
+
+    isEmptyList(req);
     setCompaniesList(req);
+    handleLoading(false);
+  }
+
+  function handleLoading(status: boolean) {
+    setLoading(status);
+  }
+
+  function isEmptyList(categoryList: Array<CompaniesListModel>) {
+    if (categoryList.length == 0) {
+      setError(true);
+    } else {
+      setError(false);
+    }
   }
 
   function HeaderTextComponent() {
@@ -53,7 +71,9 @@ const Home = ({navigation}: ScreenProps) => {
     );
   }
 
-  return (
+  return loading ? (
+    <Loading />
+  ) : (
     <Container>
       <Header />
       <HeaderTextComponent />

@@ -1,2 +1,2 @@
 export const COMPANIES_LIST_PATH = "0fba6736-9087-45cf-82d0-5686a21a9fec"
-export const CATEGORY_LIST_PATH = "0fba6736-9087-45cf-82d0-5686a21a9fec"
+export const CATEGORY_LIST_PATH = "e03566fe-1ba0-4cf8-8d1e-2e24d28385d8"

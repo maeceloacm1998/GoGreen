@@ -23,7 +23,7 @@ const FilterList = ({navigation}: ScreenProps) => {
   async function fetchFilterList() {
     handleLoading(true);
     const req = await getCategoryList();
-
+    console.log('req');
     isEmptyList(req);
     setFilterList(req);
     handleLoading(false);

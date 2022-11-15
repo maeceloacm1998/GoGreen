@@ -1,6 +1,5 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import {FlatList} from 'react-native';
-import {useFocusEffect} from '@react-navigation/native';
 
 import Header from './components/Header';
 import GenericError from '../../../components/GenericError';
@@ -17,9 +16,9 @@ const FilterList = ({navigation}: ScreenProps) => {
   const [loading, setLoading] = useState<boolean>(false);
   const [error, setError] = useState<boolean>(false);
 
-  useFocusEffect(() => {
+  useEffect(() => {
     fetchFilterList();
-  });
+  }, []);
 
   async function fetchFilterList() {
     handleLoading(true);

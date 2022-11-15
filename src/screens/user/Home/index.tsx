@@ -1,23 +1,27 @@
-import React, {useEffect, useState} from 'react';
+import React, {useState} from 'react';
 import {FlatList} from 'react-native';
 
 import Header from './components/Header';
 import FilterBar from './components/FilterBar';
-import Card, {CardType} from '../../../components/Card';
-
-import {CompaniesListModel} from '../../../models/CompaniesListModel';
-
-import {Container, HeaderText, TitleDark, TitleLight} from './styled';
+import Card from '../../../components/Card';
 import {getCompaniesList} from './repository';
 
-const Home = () => {
+import {CompaniesListModel} from '../../../models/CompaniesListModel';
+import {ScreenProps} from '../../../router/models/ScreenPropsModel';
+
+import {Container, HeaderText, TitleDark, TitleLight} from './styled';
+import {useFocusEffect} from '@react-navigation/native';
+
+const Home = ({navigation}: ScreenProps) => {
+  const navigateFilterList = () => navigation.navigate('FilterList');
+
   const [companiesList, setCompaniesList] = useState<Array<CompaniesListModel>>(
     [],
   );
 
-  useEffect(() => {
+  useFocusEffect(() => {
     fetchCompaniesList();
-  }, []);
+  });
 
   async function fetchCompaniesList() {
     const req = await getCompaniesList();
@@ -53,7 +57,7 @@ const Home = () => {
     <Container>
       <Header />
       <HeaderTextComponent />
-      <FilterBar />
+      <FilterBar onClickFilterButton={navigateFilterList} />
 
       <FlatList
         data={companiesList}

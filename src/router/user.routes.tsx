@@ -1,14 +1,14 @@
 import React from 'react';
 import {createStackNavigator} from '@react-navigation/stack';
 
-import ButtonNavigation from './bottomNavigation/buttomNavigation.routes';
 import FilterList from '../screens/user/FilterList';
+import ButtonNavigation from './bottomNavigation/buttomNavigation.routes';
 
 const Stack = createStackNavigator();
 
-function MainRoute() {
+function UserRoutes() {
   return (
-    <Stack.Navigator initialRouteName="InitialRouteUser">
+    <Stack.Navigator initialRouteName="FilterList">
       <Stack.Screen
         name="InitialRouteUser"
         component={ButtonNavigation}
@@ -27,4 +27,4 @@ function MainRoute() {
   );
 }
 
-export default MainRoute;
+export default UserRoutes;

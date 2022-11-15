@@ -10,7 +10,6 @@ import Icon from 'react-native-vector-icons/Ionicons';
 import themes from '../../themes/themes';
 import {screensName} from '../constants';
 import {ContainerIcon, TextOption} from './styled';
-import {View} from 'react-native';
 
 export type HandleIconAndColorType = {
   iconName: string;

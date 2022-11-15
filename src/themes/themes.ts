@@ -7,6 +7,7 @@ export default {
     category_tag_color: "#2B7A4B",
     text_color: "#5C6660",
     background_card_color: "#F0F0F0",
+    divider_color: "#ECF1FF",
     white: "#FFFFFF",
   },
   fonts: {

@@ -80,10 +80,10 @@ function ButtonNavigation() {
         tabBarLabel: ({focused}) => <TextOption focused={focused}></TextOption>,
         tabBarStyle: {
           backgroundColor: themes.color.white,
-          height: 70,
-          marginBottom: 16,
+          height: 55,
+          marginBottom: 10,
           marginHorizontal: 16,
-          borderRadius: 20,
+          borderRadius: 15,
         },
       })}>
       <Tab.Screen

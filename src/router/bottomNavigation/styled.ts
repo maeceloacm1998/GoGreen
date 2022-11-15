@@ -21,10 +21,10 @@ export const TextOption = styled.Text<TextOptionType>`
 `;
 
 export const ContainerIcon = styled.View<ContainerIcon>`
-  margin-bottom: -15px;
+  margin-bottom: -19px;
   width: 90%;
-  height: 60px;
-  border-radius: 20px;
+  height: 47px;
+  border-radius: 15px;
   justify-content: center;
   align-items: center;
   background-color: ${props => (props.color ? props.color : '#FFFFFF')};

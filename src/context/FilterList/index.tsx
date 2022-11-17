@@ -3,6 +3,9 @@ import React, {createContext, useContext, useState} from 'react';
 interface FilterListContextData {
   addFilter(filterName: string): void;
   removeFilter(filterName: string): void;
+  addFilterSelectedList(filterSelectedList: Array<string>): void;
+  removeAllFilters(): void;
+  isEmptyList(): boolean;
   filterSelectedList: Array<string>;
 }
 
@@ -32,6 +35,14 @@ export const FilterListProvider = ({children}: any) => {
     }
   }
 
+  function addFilterSelectedList(filterSelectedList: Array<string>) {
+    setFilterSelectedList(filterSelectedList);
+  }
+
+  function removeAllFilters() {
+    setFilterSelectedList([]);
+  }
+
   function isEmptyList(): boolean {
     return filterSelectedList.length === 0;
   }
@@ -42,6 +53,9 @@ export const FilterListProvider = ({children}: any) => {
         filterSelectedList,
         addFilter,
         removeFilter,
+        addFilterSelectedList,
+        removeAllFilters,
+        isEmptyList,
       }}>
       {children}
     </FilterListContext.Provider>

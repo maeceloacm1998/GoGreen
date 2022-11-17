@@ -7,6 +7,7 @@ import themes from '../../themes/themes';
 export interface CheckboxType extends CheckBoxProps {
   title?: string;
   defaultValueCheckbox?: boolean;
+  onCheckedValue?: (checked: boolean, value: string) => void;
   marginTop?: number;
   marginBottom?: number;
   marginLeft?: number;
@@ -18,6 +19,7 @@ const checkProps = (props: CheckboxType) => ({
   defaultValueCheckbox: props.defaultValueCheckbox
     ? props.defaultValueCheckbox
     : false,
+  onCheckedValue: props.onCheckedValue ? props.onCheckedValue : () => {},
   marginTop: props.marginTop ? props.marginTop : 0,
   marginBottom: props.marginBottom ? props.marginBottom : 0,
   marginLeft: props.marginLeft ? props.marginLeft : 0,
@@ -28,6 +30,7 @@ const CheckboxComponent = (props: CheckboxType) => {
   const {
     title,
     defaultValueCheckbox,
+    onCheckedValue,
     marginTop,
     marginBottom,
     marginLeft,
@@ -49,7 +52,10 @@ const CheckboxComponent = (props: CheckboxType) => {
           false: themes.color.text_color,
         }}
         value={toggleCheckBox}
-        onValueChange={newValue => setToggleCheckBox(newValue)}
+        onValueChange={checked => {
+          onCheckedValue(checked, title);
+          setToggleCheckBox(checked);
+        }}
         {...props}
       />
     </Container>

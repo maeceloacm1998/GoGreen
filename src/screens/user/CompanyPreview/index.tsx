@@ -1,16 +1,44 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
+
+import HeaderComponent from './components/Header';
+import Maps from './components/Maps';
+
+import {ScreenProps} from '../../../router/models/ScreenPropsModel';
+
+import {
+  fetchLatLongWithAddress,
+  getLatLong,
+} from '../../../services/getLatLongWithAddress';
+import {LatLongModel} from '../../../services/getLatLongWithAddress/models/LatLongModel';
 
 import {Container, ContainerData, Description, Title} from './styled';
-import themes from '../../../themes/themes';
-import HeaderComponent from './components/Header';
 
-const CompanyPreview = () => {
+const CompanyPreview = ({navigation}: ScreenProps) => {
+  const goBackListener = () => navigation.goBack();
+  const [latLong, setLatLong] = useState<LatLongModel>({} as LatLongModel);
+  const [loadingMap, setLoadingMap] = useState<boolean>(false);
+
+  useEffect(() => {
+    fetchLatLogProps();
+  }, []);
+
+  async function fetchLatLogProps() {
+    setLoadingMap(true);
+    const latLong = await fetchLatLongWithAddress(
+      'hildebrando de oliveira',
+      235,
+    );
+    setLatLong(getLatLong('Hildebrando De Oliveira', latLong));
+    setLoadingMap(false);
+  }
+
   return (
     <Container>
       <HeaderComponent
         title="Copagi"
-        address="BELO HORIZONTE - MINAS GERAIS"
+        address="Belo horizonte - Minas Gerais"
         category="Bateria"
+        clickGoBackListener={goBackListener}
       />
 
       <ContainerData>
@@ -25,6 +53,16 @@ const CompanyPreview = () => {
         <Title marginTop={10} marginBottom={10}>
           Localização
         </Title>
+
+        <Description marginBottom={10}>
+          Rua Hidebrando de Oliveira, 235, Copacabana, Minas Gerais
+        </Description>
+
+        <Maps
+          loading={loadingMap}
+          latitude={latLong.latitude}
+          longitude={latLong.longitude}
+        />
       </ContainerData>
     </Container>
   );

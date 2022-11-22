@@ -65,7 +65,7 @@ const Home = ({navigation}: ScreenProps) => {
         addressText={`${props.city} ${props.state}`}
         categoryText={props.category}
         image={''}
-        onClick={() => console.log(props.name)}
+        onClick={() => navigation.navigate('CompanyPreview')}
         marginTop={12}
       />
     );

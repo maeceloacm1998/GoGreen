@@ -1,4 +1,5 @@
 import React from 'react';
+import {TouchableOpacity} from 'react-native';
 
 import Image from '../../../../../assets/images/test.png';
 import IconMaterial from 'react-native-vector-icons/MaterialCommunityIcons';
@@ -22,6 +23,7 @@ export type HeaderComponentType = {
   address: string;
   category: string;
   clickRegisterVisitListener?: () => void;
+  clickGoBackListener?: () => void;
 };
 
 const checkProps = (props: HeaderComponentType) => ({
@@ -31,22 +33,32 @@ const checkProps = (props: HeaderComponentType) => ({
   clickRegisterVisitListener: props.clickRegisterVisitListener
     ? props.clickRegisterVisitListener
     : () => {},
+  clickGoBackListener: props.clickGoBackListener
+    ? props.clickGoBackListener
+    : () => {},
 });
 
 const HeaderComponent = (props: HeaderComponentType) => {
-  const {address, category, clickRegisterVisitListener, title} =
-    checkProps(props);
+  const {
+    address,
+    category,
+    clickRegisterVisitListener,
+    clickGoBackListener,
+    title,
+  } = checkProps(props);
 
   const clickRegisterVisit = () => clickRegisterVisitListener();
 
   return (
     <Header>
-      <Icon
-        name="arrow-back-ios"
-        size={18}
-        style={{marginLeft: 5}}
-        color={themes.color.text_color}
-      />
+      <TouchableOpacity onPress={clickGoBackListener}>
+        <Icon
+          name="arrow-back-ios"
+          size={18}
+          style={{marginLeft: 5}}
+          color={themes.color.text_color}
+        />
+      </TouchableOpacity>
       <Container>
         <ImageCustom source={Image} />
         <ContainerData>

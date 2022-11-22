@@ -3,6 +3,8 @@ import {createStackNavigator} from '@react-navigation/stack';
 
 import ButtonNavigation from './bottomNavigation/buttomNavigation.routes';
 import FilterList from '../screens/user/FilterList';
+import CompanyPreview from '../screens/user/CompanyPreview';
+
 import {FilterListProviderHook} from '../context';
 
 const Stack = createStackNavigator();
@@ -21,6 +23,13 @@ function MainRoute() {
         <Stack.Screen
           name="FilterList"
           component={FilterList}
+          options={{
+            headerShown: false,
+          }}
+        />
+        <Stack.Screen
+          name="CompanyPreview"
+          component={CompanyPreview}
           options={{
             headerShown: false,
           }}

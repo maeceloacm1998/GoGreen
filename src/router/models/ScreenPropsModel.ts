@@ -13,4 +13,5 @@ export type StackParamsList = {
   Schedule: any;
   Profile: any;
   FilterList: any;
+  CompanyPreview: any;
 };

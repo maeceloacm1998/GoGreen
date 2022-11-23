@@ -5,5 +5,6 @@ export const screensName: StackParamsList = {
   Schedule: "Schedule",
   Profile: "Profile",
   InitialRouteUser: "InitialRouteUser",
-  FilterList: "FilterList"
+  FilterList: "FilterList",
+  CompanyPreview: "CompanyPreview"
 }

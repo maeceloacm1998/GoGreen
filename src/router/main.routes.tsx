@@ -1,41 +1,22 @@
 import React from 'react';
 import {createStackNavigator} from '@react-navigation/stack';
 
+import Login from '../screens/authentication/login';
 import ButtonNavigation from './bottomNavigation/buttomNavigation.routes';
-import FilterList from '../screens/user/FilterList';
-import CompanyPreview from '../screens/user/CompanyPreview';
-
-import {FilterListProviderHook} from '../context';
 
 const Stack = createStackNavigator();
 
 function MainRoute() {
   return (
-    <FilterListProviderHook>
-      <Stack.Navigator initialRouteName="InitialRouteUser">
-        <Stack.Screen
-          name="InitialRouteUser"
-          component={ButtonNavigation}
-          options={{
-            headerShown: false,
-          }}
-        />
-        <Stack.Screen
-          name="FilterList"
-          component={FilterList}
-          options={{
-            headerShown: false,
-          }}
-        />
-        <Stack.Screen
-          name="CompanyPreview"
-          component={CompanyPreview}
-          options={{
-            headerShown: false,
-          }}
-        />
-      </Stack.Navigator>
-    </FilterListProviderHook>
+    <Stack.Navigator initialRouteName="Login">
+      <Stack.Screen
+        name="Login"
+        component={Login}
+        options={{
+          headerShown: false,
+        }}
+      />
+    </Stack.Navigator>
   );
 }
 

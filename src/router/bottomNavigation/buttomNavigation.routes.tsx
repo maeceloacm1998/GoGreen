@@ -7,6 +7,7 @@ import SchedulesList from '../../screens/user/SchedulesList';
 import Profile from '../../screens/user/Profile';
 
 import Icon from 'react-native-vector-icons/Ionicons';
+
 import themes from '../../themes/themes';
 import {screensName} from '../constants';
 import {ContainerIcon, TextOption} from './styled';
@@ -84,7 +85,8 @@ function ButtonNavigation() {
           marginHorizontal: 16,
           borderRadius: 15,
         },
-      })}>
+      })}
+      initialRouteName="Login">
       <Tab.Screen
         name={screensName.Home}
         component={Home}

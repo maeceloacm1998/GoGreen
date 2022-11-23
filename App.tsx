@@ -1,16 +1,12 @@
 import React from 'react';
 import {StatusBar, View} from 'react-native';
+import {AuthenticationProviderHook} from './src/context';
 
 import Navigation from './src/router';
 
 import themes from './src/themes/themes';
 
 const App = () => {
-  function dale(item: string) {
-    console.log('entoru aqui');
-    console.log(item);
-  }
-
   return (
     <View style={{flex: 1, marginTop: StatusBar.currentHeight}}>
       <StatusBar
@@ -18,7 +14,9 @@ const App = () => {
         barStyle="dark-content"
         backgroundColor={themes.color.primary}
       />
-      <Navigation />
+      <AuthenticationProviderHook>
+        <Navigation />
+      </AuthenticationProviderHook>
     </View>
   );
 };

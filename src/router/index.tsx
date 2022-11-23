@@ -1,14 +1,18 @@
 import {GestureHandlerRootView} from 'react-native-gesture-handler';
 import React from 'react';
-
 import {NavigationContainer} from '@react-navigation/native';
-import StackNavigator from './main.routes';
+
+import AuthenticationNavigator from './main.routes';
+import UserNavigator from './user.routes';
+import {useAuthentication} from '../context/Authentication';
 
 export default function Navigation() {
+  const {logged} = useAuthentication();
+
   return (
     <GestureHandlerRootView style={{flex: 1}}>
       <NavigationContainer>
-        <StackNavigator />
+        {logged ? <UserNavigator /> : <AuthenticationNavigator />}
       </NavigationContainer>
     </GestureHandlerRootView>
   );

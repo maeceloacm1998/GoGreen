@@ -6,5 +6,9 @@ export const screensName: StackParamsList = {
   Profile: "Profile",
   InitialRouteUser: "InitialRouteUser",
   FilterList: "FilterList",
-  CompanyPreview: "CompanyPreview"
+  CompanyPreview: "CompanyPreview",
+  Login: "Login",
+  SelectionRegisterType: "SelectionRegisterType",
+  UserForm: "UserForm",
+  EnterpriseForm: "EnterpriseForm"
 }

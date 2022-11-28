@@ -14,4 +14,8 @@ export type StackParamsList = {
   Profile: any;
   FilterList: any;
   CompanyPreview: any;
+  Login: any;
+  SelectionRegisterType: any;
+  UserForm: any;
+  EnterpriseForm: any;
 };

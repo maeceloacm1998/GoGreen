@@ -7,8 +7,10 @@ export default {
     category_tag_color: "#2B7A4B",
     text_color: "#5C6660",
     background_card_color: "#F0F0F0",
+    background_card_option_color: "#F6F6F6",
     divider_color: "#ECF1FF",
     white: "#FFFFFF",
+    error: "#CC3A3A"
   },
   fonts: {
     roboto_regular: "Roboto-Regular",

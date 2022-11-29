@@ -17,6 +17,8 @@ import themes from '../../../themes/themes';
 import {useAuthentication} from '../../../context/Authentication';
 
 const Login = ({navigation}: ScreenProps) => {
+  const registerNavigation = () => navigation.navigate('SelectionRegisterType');
+
   const {authenticationUser} = useAuthentication();
 
   async function login() {
@@ -33,7 +35,7 @@ const Login = ({navigation}: ScreenProps) => {
           <TextButton color={themes.color.white}>Entrar</TextButton>
         </ButtonDefault>
 
-        <ButtonWithBorder activeOpacity={0.7}>
+        <ButtonWithBorder activeOpacity={0.7} onPress={registerNavigation}>
           <TextButton color={themes.color.primary}>
             Não tem conta? Registre-se
           </TextButton>

@@ -4,13 +4,25 @@ import {useForm} from 'react-hook-form';
 
 import {ScreenProps} from '../../../router/models/ScreenPropsModel';
 import {InputForm} from '../../../components/InputForm';
-import SelectListComponent, {
-  SelectListItemType,
-} from '../../../components/SelectList';
+import {SelectListItemType} from '../../../components/SelectList';
 
-import {Button, Container, Subtitle, TextButton, Title} from './styled';
+import {createUser} from './repository';
+import {UserFormModel} from './models/UserFormModel';
 
-const categorys: Array<SelectListItemType> = [
+import Icon from 'react-native-vector-icons/MaterialIcons';
+
+import {
+  Button,
+  Container,
+  GoBackButton,
+  GoBackText,
+  Subtitle,
+  TextButton,
+  Title,
+} from './styled';
+import themes from '../../../themes/themes';
+
+const categoryList: Array<SelectListItemType> = [
   {key: '1', value: 'Bateria'},
   {key: '2', value: 'Computadores'},
   {key: '3', value: 'Tablets'},
@@ -26,53 +38,46 @@ const categorys: Array<SelectListItemType> = [
 const UserForm = ({navigation}: ScreenProps) => {
   const {control, handleSubmit, formState} = useForm();
 
-  const [category, setCategory] = useState<string>('');
-
-  function handleCategory(position: string) {
-    categorys.map(item => {
-      if (item.key === position) {
-        setCategory(item.value);
-      }
-    });
+  async function onSubmit(data: any) {
+    const userModel: UserFormModel = data;
+    await handleCreateUser(userModel);
   }
 
-  function onSubmit(data: any) {
-    console.log(data);
+  async function handleCreateUser(user: UserFormModel) {
+    try {
+      await createUser(user);
+      // navigation
+    } catch (e) {
+      console.log(e);
+    }
   }
 
   return (
     <ScrollView>
+      <GoBackButton activeOpacity={0.7} onPress={() => navigation.goBack()}>
+        <Icon
+          name="arrow-back-ios"
+          size={20}
+          color={themes.color.primary}
+          style={{marginVertical: 16, marginHorizontal: 10}}
+        />
+        <GoBackText>Voltar</GoBackText>
+      </GoBackButton>
+
       <Container>
         <Title>Cria sua conta!</Title>
         <Subtitle>
-          Preencha os dados corretamente para registrar sua empresa :)
+          Preencha os dados corretamente para criar sua conta :)
         </Subtitle>
 
         <InputForm
-          placeholder="Nome da empresa"
+          placeholder="Nome completo"
           control={control}
           formState={formState.errors.name}
           nameId="name"
           requiredRule
           marginTop={30}
           marginBottom={10}
-        />
-
-        <SelectListComponent
-          placeholder="Selecione uma categoria"
-          data={categorys}
-          selectedItem={handleCategory}
-          marginBottom={10}
-        />
-
-        <InputForm
-          placeholder="Descrição"
-          control={control}
-          formState={formState.errors.description}
-          requiredRule
-          nameId="description"
-          marginBottom={10}
-          multiline
         />
 
         <InputForm

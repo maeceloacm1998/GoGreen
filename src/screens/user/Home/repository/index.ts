@@ -8,5 +8,5 @@ const httpClient = new HttpRemoteAuthentication(new HttpClient());
 
 export async function getCompaniesList(): Promise<Array<CompaniesListModel>> {
   const request = await httpClient.get(COMPANIES_LIST_PATH)
-  return request.body
+  return request
 }

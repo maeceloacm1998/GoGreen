@@ -1,21 +1,22 @@
 import React, {createContext, useContext, useState, useMemo} from 'react';
 
 interface AuthenticationContextData {
-  authenticationUser(email: string, password: string): void;
+  authenticationUser(user: User): void;
   logout(): void;
   user: User;
   logged: boolean;
 }
 
-interface User {
+export interface User {
   id: number;
   name: string;
-  age: number;
-  username: string;
-  senha: string;
   city: string;
   state: string;
   cep: string;
+  address: string;
+  date: string;
+  email: string;
+  password: string;
 }
 
 const AuthenticationContext = createContext<AuthenticationContextData>(
@@ -26,23 +27,22 @@ export const AuthenticationProvider = ({children}: any) => {
   const [user, setUser] = useState<User>({} as User);
   const [logged, setLogged] = useState<boolean>(false);
 
-  async function authenticationUser(email: string, password: string) {
+  async function authenticationUser(user: User) {
     const fakeUser: User = {
       id: 1,
-      age: 24,
       cep: '31550500',
       city: 'Belo Horizonte',
       name: 'Marcelo',
-      senha: '12341',
+      password: '12341',
+      email: 'maeceloacm1998@gmail.com',
       state: 'Minas Gerais',
-      username: 'maeceloacm',
+      address: 'Rua hildebrando de oliveira, 234',
+      date: 'Data',
     };
 
     setUser(fakeUser);
     setLogged(true);
   }
-
-  console.log('aqui', logged);
 
   function logout() {
     setLogged(false);

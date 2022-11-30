@@ -1,10 +1,10 @@
-import React, {useState} from 'react';
+import React from 'react';
 import {ScrollView} from 'react-native';
 import {useForm} from 'react-hook-form';
 
 import {ScreenProps} from '../../../router/models/ScreenPropsModel';
 import {InputForm} from '../../../components/InputForm';
-import {SelectListItemType} from '../../../components/SelectList';
+import {useAuthentication, User} from '../../../context/Authentication';
 
 import {createUser} from './repository';
 import {UserFormModel} from './models/UserFormModel';
@@ -22,21 +22,9 @@ import {
 } from './styled';
 import themes from '../../../themes/themes';
 
-const categoryList: Array<SelectListItemType> = [
-  {key: '1', value: 'Bateria'},
-  {key: '2', value: 'Computadores'},
-  {key: '3', value: 'Tablets'},
-  {key: '4', value: 'Teclados'},
-  {key: '5', value: 'Impressoras'},
-  {key: '6', value: 'Cameras fotograficas'},
-  {key: '7', value: 'Lampadas eletronicas'},
-  {key: '8', value: 'Aparelhos de som'},
-  {key: '9', value: 'Geladeira'},
-  {key: '10', value: 'Micro-ondas'},
-];
-
 const UserForm = ({navigation}: ScreenProps) => {
   const {control, handleSubmit, formState} = useForm();
+  const {authenticationUser} = useAuthentication();
 
   async function onSubmit(data: any) {
     const userModel: UserFormModel = data;
@@ -45,8 +33,8 @@ const UserForm = ({navigation}: ScreenProps) => {
 
   async function handleCreateUser(user: UserFormModel) {
     try {
-      await createUser(user);
-      // navigation
+      const userCreated = await createUser(user);
+      authenticationUser(user as User);
     } catch (e) {
       console.log(e);
     }

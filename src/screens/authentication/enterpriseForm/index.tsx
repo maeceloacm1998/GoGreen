@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import {ScrollView} from 'react-native';
+import {ScrollView, ActivityIndicator} from 'react-native';
 import {useForm} from 'react-hook-form';
 
 import {ScreenProps} from '../../../router/models/ScreenPropsModel';
@@ -9,6 +9,10 @@ import SelectListComponent, {
 } from '../../../components/SelectList';
 
 import {createUser} from './repository';
+import {
+  useAuthentication,
+  userTypeProps,
+} from '../../../context/Authentication';
 import {EnterpriseFormModel} from './models/EnterpriseFormModel';
 
 import Icon from 'react-native-vector-icons/MaterialIcons';
@@ -39,8 +43,10 @@ const categoryList: Array<SelectListItemType> = [
 
 const EnterpriseForm = ({navigation}: ScreenProps) => {
   const {control, handleSubmit, formState} = useForm();
+  const {authentication} = useAuthentication();
 
   const [category, setCategory] = useState<string>('');
+  const [loading, setLoading] = useState<boolean>(false);
 
   function handleCategory(position: string) {
     categoryList.map(item => {
@@ -57,9 +63,12 @@ const EnterpriseForm = ({navigation}: ScreenProps) => {
 
   async function handleCreateUser(user: EnterpriseFormModel, category: string) {
     try {
-      await createUser(user, category);
+      setLoading(true);
+      const res = await createUser(user, category);
+      authentication(res, userTypeProps.company);
     } catch (e) {
       console.log(e);
+      setLoading(false);
     }
   }
 
@@ -168,8 +177,15 @@ const EnterpriseForm = ({navigation}: ScreenProps) => {
           marginBottom={10}
         />
 
-        <Button activeOpacity={0.7} onPress={handleSubmit(onSubmit)}>
-          <TextButton>Registrar-se</TextButton>
+        <Button
+          disabled={loading}
+          activeOpacity={0.7}
+          onPress={handleSubmit(onSubmit)}>
+          {loading ? (
+            <ActivityIndicator size={20} color={themes.color.white} />
+          ) : (
+            <TextButton>Registrar-se</TextButton>
+          )}
         </Button>
       </Container>
     </ScrollView>

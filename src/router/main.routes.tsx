@@ -1,10 +1,10 @@
 import React from 'react';
 import {createStackNavigator} from '@react-navigation/stack';
 
-import Login from '../screens/authentication/login';
-import SelectionRegisterType from '../screens/authentication/selectionRegisterType';
-import UserForm from '../screens/authentication/userForm';
-import EnterpriseForm from '../screens/authentication/enterpriseForm';
+import Login from '../screens/authentication/Login';
+import SelectionRegisterType from '../screens/authentication/SelectionRegisterType';
+import UserForm from '../screens/authentication/UserForm';
+import EnterpriseForm from '../screens/authentication/EnterpriseForm';
 
 const Stack = createStackNavigator();
 

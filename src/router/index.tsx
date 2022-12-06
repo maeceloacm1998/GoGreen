@@ -7,12 +7,18 @@ import UserNavigator from './user.routes';
 import {useAuthentication} from '../context/Authentication';
 
 export default function Navigation() {
-  const {logged} = useAuthentication();
+  const {loggedUser, loggedCompany} = useAuthentication();
 
   return (
     <GestureHandlerRootView style={{flex: 1}}>
       <NavigationContainer>
-        {logged ? <UserNavigator /> : <AuthenticationNavigator />}
+        {loggedUser ? (
+          <UserNavigator />
+        ) : loggedCompany ? (
+          <AuthenticationNavigator />
+        ) : (
+          <AuthenticationNavigator />
+        )}
       </NavigationContainer>
     </GestureHandlerRootView>
   );

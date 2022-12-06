@@ -7,17 +7,17 @@ export class HttpRemoteAuthentication implements Authentication {
 
   async get(path: string): Promise<any> {
     if(path.length == 0) {
-      this.handleError("Path não encontrado", 401)
+      console.error("Path não encontrado")
     }
 
     return await this.httpClient.get(path)
   }
 
-  private handleError(message: string, code: number, body: any = {}): HttpResponse {
-    return {
-      message,
-      code,
-      body
+  async post(path: string, body: any): Promise<any> {
+    if(path.length == 0) {
+      console.error("Path não encontrado")
     }
+
+    return await this.httpClient.post(path, body)
   }
 }

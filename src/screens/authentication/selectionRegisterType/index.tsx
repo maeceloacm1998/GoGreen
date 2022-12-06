@@ -17,7 +17,6 @@ import {
   Title,
 } from './styled';
 import themes from '../../../themes/themes';
-import {TouchableOpacity} from 'react-native';
 
 const SelectionRegisterType = ({navigation}: ScreenProps) => {
   const ENTERPRISE_TYPE = 'Empresa';

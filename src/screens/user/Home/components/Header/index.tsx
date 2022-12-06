@@ -1,27 +1,32 @@
 import React from 'react';
 import {TouchableOpacity} from 'react-native-gesture-handler';
 
-import userIcon from '../../../../../assets/images/buttonExit.png';
+import Icon from 'react-native-vector-icons/Ionicons';
+
 import {useAuthentication} from '../../../../../context/Authentication';
+import themes from '../../../../../themes/themes';
 
-import {
-  ImageIcon,
-  HeaderContainer,
-  UserNameDark,
-  UserNameLight,
-} from './styled';
+import {HeaderContainer, UserNameDark, UserNameLight} from './styled';
 
-const Header = () => {
+export type HeaderType = {
+  username: string;
+};
+
+const Header = ({username}: HeaderType) => {
   const {logout} = useAuthentication();
+
+  function firstName(): string {
+    return username.split(' ')[0].toString();
+  }
 
   return (
     <HeaderContainer>
       <UserNameLight>
         Olá,{'\n'}
-        <UserNameDark>Usuário</UserNameDark>
+        <UserNameDark>{firstName()}</UserNameDark>
       </UserNameLight>
       <TouchableOpacity onPress={logout}>
-        <ImageIcon source={userIcon} />
+        <Icon name="exit-outline" size={30} color={themes.color.primary} />
       </TouchableOpacity>
     </HeaderContainer>
   );

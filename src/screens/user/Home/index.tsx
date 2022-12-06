@@ -10,9 +10,13 @@ import {ScreenProps} from '../../../router/models/ScreenPropsModel';
 
 import {Container, HeaderText, TitleDark, TitleLight} from './styled';
 import Loading from '../../../components/Loading';
+import {useAuthentication} from '../../../context/Authentication';
 
 const Home = ({navigation}: ScreenProps) => {
   const navigateFilterList = () => navigation.navigate('FilterList');
+
+  const {user} = useAuthentication();
+
   const [loading, setLoading] = useState<boolean>(false);
   const [error, setError] = useState<boolean>(false);
 
@@ -74,7 +78,7 @@ const Home = ({navigation}: ScreenProps) => {
     <Loading />
   ) : (
     <Container>
-      <Header />
+      <Header username={user.name} />
       <HeaderTextComponent />
       {/* <FilterBar onClickFilterButton={navigateFilterList} /> */}
 

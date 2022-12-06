@@ -23,5 +23,5 @@ export const TitleDark = styled.Text`
   font-size: 17px;
   font-family: ${themes.fonts.jost_medium};
   font-weight: 700;
-  color: ${themes.color.text_color};
+  color: ${themes.color.primary_dark};
 `;

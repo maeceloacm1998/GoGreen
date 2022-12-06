@@ -1,5 +1,5 @@
-import styled from "styled-components/native";
-import themes from "../../../../../themes/themes";
+import styled from 'styled-components/native';
+import themes from '../../../../../themes/themes';
 
 export const HeaderContainer = styled.View`
   flex-direction: row;
@@ -19,8 +19,4 @@ export const UserNameDark = styled.Text`
   font-family: ${themes.fonts.jost_medium};
   font-weight: 700;
   color: ${themes.color.text_color};
-`;
-export const ImageIcon = styled.Image`
-  width: 30px;
-  height: 40px;
 `;

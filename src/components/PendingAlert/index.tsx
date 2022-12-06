@@ -1,10 +1,10 @@
 import React from 'react';
 import Lottie from 'lottie-react-native';
 
-import Images from '../../assets//images/test.png';
+import Images from '../../assets//images/IconGoGreen.png';
 import {TitleText} from '../Card/styled';
 
-import Animation from "../../assets/animations/status.json"
+import Animation from '../../assets/animations/status.json';
 
 import {
   AddressText,
@@ -42,7 +42,17 @@ const checkProps = (props: PendingAlertType) => ({
 });
 
 const PendingALert = (props: PendingAlertType) => {
-  const {image, title, address, category, onClick, marginTop, marginBottom, marginLeft, marginRight} = checkProps(props)
+  const {
+    image,
+    title,
+    address,
+    category,
+    onClick,
+    marginTop,
+    marginBottom,
+    marginLeft,
+    marginRight,
+  } = checkProps(props);
 
   return (
     <Container
@@ -60,7 +70,12 @@ const PendingALert = (props: PendingAlertType) => {
         </Information>
       </InformationContainer>
       <StatusContainer>
-        <Lottie source={Animation} autoPlay loop style={{width: 30, height:30}} />
+        <Lottie
+          source={Animation}
+          autoPlay
+          loop
+          style={{width: 30, height: 30}}
+        />
         <StatusText>Pendente...</StatusText>
       </StatusContainer>
     </Container>

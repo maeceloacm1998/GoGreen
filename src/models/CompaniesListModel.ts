@@ -6,4 +6,5 @@ export interface CompaniesListModel {
   state: string;
   date: string;
   category: string;
+  description: string;
 }

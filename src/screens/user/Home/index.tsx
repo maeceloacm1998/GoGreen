@@ -2,7 +2,6 @@ import React, {useState, useEffect} from 'react';
 import {FlatList} from 'react-native';
 
 import Header from './components/Header';
-import FilterBar from './components/FilterBar';
 import Card from '../../../components/Card';
 import {getCompaniesList} from './repository';
 

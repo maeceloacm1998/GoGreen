@@ -21,7 +21,6 @@ export const UserNameDark = styled.Text`
   color: ${themes.color.text_color};
 `;
 export const ImageIcon = styled.Image`
-  width: 56px;
-  height: 56px;
-  border-radius: 100px;
+  width: 30px;
+  height: 40px;
 `;

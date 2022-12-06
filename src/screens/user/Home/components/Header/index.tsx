@@ -1,7 +1,7 @@
 import React from 'react';
 import {TouchableOpacity} from 'react-native-gesture-handler';
 
-import userIcon from '../../../../../assets/images/IconGoGreen.png';
+import userIcon from '../../../../../assets/images/buttonExit.png';
 import {useAuthentication} from '../../../../../context/Authentication';
 
 import {

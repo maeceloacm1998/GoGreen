@@ -24,7 +24,7 @@ export type CardType = {
   marginRight?: number;
 };
 
-import Test from '../../assets/images/test.png';
+import Test from '../../assets/images/IconGoGreen.png';
 import themes from '../../themes/themes';
 
 const translate = (props: CardType) => ({

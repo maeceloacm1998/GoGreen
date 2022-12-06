@@ -62,10 +62,10 @@ const Home = ({navigation}: ScreenProps) => {
       <Card
         key={props.id}
         title={props.name}
-        addressText={`${props.city} ${props.state}`}
+        addressText={`${props.city} - ${props.state}`}
         categoryText={props.category}
         image={''}
-        onClick={() => navigation.navigate('CompanyPreview')}
+        onClick={() => navigation.navigate('CompanyPreview', {id: props.id})}
         marginTop={12}
       />
     );
@@ -77,7 +77,7 @@ const Home = ({navigation}: ScreenProps) => {
     <Container>
       <Header />
       <HeaderTextComponent />
-      <FilterBar onClickFilterButton={navigateFilterList} />
+      {/* <FilterBar onClickFilterButton={navigateFilterList} /> */}
 
       <FlatList
         data={companiesList}

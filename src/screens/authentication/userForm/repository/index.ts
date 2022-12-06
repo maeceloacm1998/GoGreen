@@ -16,6 +16,5 @@ export async function createUser(user: UserFormModel): Promise<User> {
   }
 
   const res = await httpClient.post(REGISTER_USER_PATH, userModel)
-  console.log(res.data)
   return res.data as User
 }

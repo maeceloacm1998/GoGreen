@@ -5,7 +5,7 @@ import themes from "../../../themes/themes";
 export const Container = styled.View`
   flex: 1;
   align-items: center;
-  padding: 0 16px;
+  padding: 16px 16px;
 `;
 
 export const Title = styled.Text`

@@ -11,7 +11,7 @@ const App = () => {
     <View style={{flex: 1, marginTop: StatusBar.currentHeight}}>
       <StatusBar
         translucent
-        barStyle="dark-content"
+        barStyle="light-content"
         backgroundColor={themes.color.primary}
       />
       <AuthenticationProviderHook>

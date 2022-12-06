@@ -1,5 +1,5 @@
-import React from 'react';
-import {ScrollView} from 'react-native';
+import React, {useState} from 'react';
+import {ActivityIndicator, ScrollView} from 'react-native';
 import {useForm} from 'react-hook-form';
 
 import {ScreenProps} from '../../../router/models/ScreenPropsModel';
@@ -24,7 +24,9 @@ import themes from '../../../themes/themes';
 
 const UserForm = ({navigation}: ScreenProps) => {
   const {control, handleSubmit, formState} = useForm();
-  const {authenticationUser} = useAuthentication();
+  const {authentication} = useAuthentication();
+
+  const [loading, setLoading] = useState<boolean>(false);
 
   async function onSubmit(data: any) {
     const userModel: UserFormModel = data;
@@ -33,10 +35,12 @@ const UserForm = ({navigation}: ScreenProps) => {
 
   async function handleCreateUser(user: UserFormModel) {
     try {
+      setLoading(true);
       const userCreated = await createUser(user);
-      authenticationUser(user as User);
+      authentication(userCreated, 'User');
     } catch (e) {
       console.log(e);
+      setLoading(false);
     }
   }
 
@@ -129,7 +133,11 @@ const UserForm = ({navigation}: ScreenProps) => {
         />
 
         <Button activeOpacity={0.7} onPress={handleSubmit(onSubmit)}>
-          <TextButton>Registrar-se</TextButton>
+          {loading ? (
+            <ActivityIndicator size={20} color={themes.color.white} />
+          ) : (
+            <TextButton>Registrar-se</TextButton>
+          )}
         </Button>
       </Container>
     </ScrollView>

@@ -1,6 +1,8 @@
-import React, {createContext, useContext, useState, useMemo} from 'react';
+import React, {createContext, useContext, useState} from 'react';
+import {AuthenticationResponseModel} from './models/AuthenticationResponseModel';
 
 interface AuthenticationContextData {
+  login(email: string, password: string): Promise<void>;
   authentication(body: User | Company, userType: string): void;
   logout(): void;
   user: User;
@@ -12,7 +14,6 @@ interface AuthenticationContextData {
 export interface User {
   id: number;
   name: string;
-  userType: string;
   city: string;
   state: string;
   cep: string;
@@ -25,7 +26,6 @@ export interface User {
 export interface Company {
   id: number;
   name: string;
-  userType: string;
   imageUrl: string;
   category: string;
   city: string;
@@ -53,8 +53,30 @@ export const AuthenticationProvider = ({children}: any) => {
   const [loggedUser, setLoggedUser] = useState<boolean>(false);
   const [loggedCompany, setLoggedCompany] = useState<boolean>(false);
 
-  async function authentication(body: User | Company) {
-    if (body.userType === userTypeProps.user) {
+  async function login(email: string, password: string) {
+    const fakeUser: User = {
+      id: 1,
+      cep: '31550500',
+      city: 'Belo Horizonte',
+      name: 'Marcelo',
+      password: '12341',
+      email: 'maeceloacm1998@gmail.com',
+      state: 'Minas Gerais',
+      address: 'Rua hildebrando de oliveira, 234',
+      date: 'Data',
+    };
+
+    // Fazer a requisição do login
+    const res: AuthenticationResponseModel = {
+      userType: userTypeProps.user,
+      data: fakeUser,
+    };
+
+    authentication(res.data, res.userType);
+  }
+
+  function authentication(body: User | Company, userType: string) {
+    if (userType === userTypeProps.user) {
       setUser(body as User);
       setLoggedUser(true);
     } else {
@@ -65,8 +87,10 @@ export const AuthenticationProvider = ({children}: any) => {
 
   function logout() {
     if (loggedUser) {
+      setUser({} as User);
       setLoggedUser(false);
     } else {
+      setCompany({} as Company);
       setLoggedCompany(false);
     }
   }
@@ -75,6 +99,7 @@ export const AuthenticationProvider = ({children}: any) => {
     <AuthenticationContext.Provider
       value={{
         authentication,
+        login,
         loggedUser,
         loggedCompany,
         logout,

@@ -1,6 +1,7 @@
-import React, {useState} from 'react';
+import React, {useCallback, useState} from 'react';
 import {ScrollView, ActivityIndicator} from 'react-native';
 import {useForm} from 'react-hook-form';
+import {debounce} from 'lodash';
 
 import {ScreenProps} from '../../../router/models/ScreenPropsModel';
 import {InputForm} from '../../../components/InputForm';
@@ -27,6 +28,8 @@ import {
   Title,
 } from './styled';
 import themes from '../../../themes/themes';
+import {SearchAddressModel} from '../../../services/searchAddress/models/SearchAddressModel';
+import {searchAddress} from '../../../services/searchAddress';
 
 const categoryList: Array<SelectListItemType> = [
   {key: '1', value: 'Bateria'},
@@ -46,7 +49,24 @@ const EnterpriseForm = ({navigation}: ScreenProps) => {
   const {authentication} = useAuthentication();
 
   const [category, setCategory] = useState<string>('');
+  const [addressComplete, setAddressComplete] = useState<SearchAddressModel>(
+    {} as SearchAddressModel,
+  );
   const [loading, setLoading] = useState<boolean>(false);
+
+  async function setAddressWithCep(cep: string) {
+    const res = await searchAddress(cep);
+    if (res) {
+      setAddressComplete(res);
+    }
+  }
+
+  const handleAddressComplete = useCallback(
+    debounce((cep: string) => {
+      setAddressWithCep(cep);
+    }, 800),
+    [],
+  );
 
   function handleCategory(position: string) {
     categoryList.map(item => {
@@ -121,8 +141,10 @@ const EnterpriseForm = ({navigation}: ScreenProps) => {
           placeholder="CEP"
           control={control}
           formState={formState.errors.cep}
-          requiredRule
           nameId="cep"
+          onChangeText={text => {
+            handleAddressComplete(text);
+          }}
           marginBottom={10}
           keyboardType="numeric"
         />
@@ -132,8 +154,19 @@ const EnterpriseForm = ({navigation}: ScreenProps) => {
           control={control}
           formState={formState.errors.address}
           nameId="address"
+          value={addressComplete.logradouro}
           requiredRule={false}
           marginBottom={10}
+        />
+
+        <InputForm
+          placeholder="Cidade"
+          control={control}
+          formState={formState.errors.city}
+          requiredRule={false}
+          value={addressComplete.localidade}
+          nameId="city"
+          marginBottom={20}
         />
 
         <InputForm
@@ -143,15 +176,6 @@ const EnterpriseForm = ({navigation}: ScreenProps) => {
           requiredRule={false}
           nameId="state"
           marginBottom={10}
-        />
-
-        <InputForm
-          placeholder="Cidade"
-          control={control}
-          formState={formState.errors.city}
-          requiredRule={false}
-          nameId="city"
-          marginBottom={20}
         />
 
         <Subtitle>Digite seus dados para acessar a aplicação:</Subtitle>

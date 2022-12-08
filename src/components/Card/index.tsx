@@ -15,7 +15,7 @@ import {
 export type CardType = {
   image?: string;
   title: string;
-  addressText: string;
+  addressText?: string;
   categoryText: string;
   onClick?: () => void;
   marginTop?: number;

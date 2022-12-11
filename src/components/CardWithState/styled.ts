@@ -1,7 +1,7 @@
-import styled from "styled-components/native";
-import themes from "../../themes/themes";
+import styled from 'styled-components/native';
+import themes from '../../themes/themes';
 
-export type ContainerCard = {
+export interface ContainerCard {
   marginTop: number;
   marginBottom: number;
   marginLeft: number;
@@ -15,10 +15,10 @@ export const CardContainer = styled.View<ContainerCard>`
   align-items: center;
   padding: 20px 10px;
   border-radius: 10px;
-  margin-top: ${props => props.marginTop ? props.marginTop : 0}px;
-  margin-bottom: ${props => props.marginBottom ? props.marginBottom : 0}px;
-  margin-left: ${props => props.marginLeft ? props.marginLeft : 0}px;
-  margin-right: ${props => props.marginRight ? props.marginRight : 0}px;
+  margin-top: ${(props) => (props.marginTop ? props.marginTop : 0)}px;
+  margin-bottom: ${(props) => (props.marginBottom ? props.marginBottom : 0)}px;
+  margin-left: ${(props) => (props.marginLeft ? props.marginLeft : 0)}px;
+  margin-right: ${(props) => (props.marginRight ? props.marginRight : 0)}px;
 `;
 
 export const ImageCustom = styled.Image`

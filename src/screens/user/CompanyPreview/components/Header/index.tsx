@@ -1,5 +1,5 @@
 import React from 'react';
-import {TouchableOpacity} from 'react-native';
+import { TouchableOpacity } from 'react-native';
 
 import Image from '../../../../../assets/images/IconGoGreen.png';
 import IconMaterial from 'react-native-vector-icons/MaterialCommunityIcons';
@@ -14,17 +14,17 @@ import {
   ImageCustom,
   RegisterCollectButton,
   RegisterCollectText,
-  TitleText,
+  TitleText
 } from './styled';
 import themes from '../../../../../themes/themes';
 
-export type HeaderComponentType = {
+export interface HeaderComponentType {
   title: string;
   address: string;
   category: string;
   clickRegisterVisitListener?: () => void;
   clickGoBackListener?: () => void;
-};
+}
 
 const checkProps = (props: HeaderComponentType) => ({
   title: props.title ? props.title : '',
@@ -33,19 +33,12 @@ const checkProps = (props: HeaderComponentType) => ({
   clickRegisterVisitListener: props.clickRegisterVisitListener
     ? props.clickRegisterVisitListener
     : () => {},
-  clickGoBackListener: props.clickGoBackListener
-    ? props.clickGoBackListener
-    : () => {},
+  clickGoBackListener: props.clickGoBackListener ? props.clickGoBackListener : () => {}
 });
 
 const HeaderComponent = (props: HeaderComponentType) => {
-  const {
-    address,
-    category,
-    clickRegisterVisitListener,
-    clickGoBackListener,
-    title,
-  } = checkProps(props);
+  const { address, category, clickRegisterVisitListener, clickGoBackListener, title } =
+    checkProps(props);
 
   const clickRegisterVisit = () => clickRegisterVisitListener();
 
@@ -55,7 +48,7 @@ const HeaderComponent = (props: HeaderComponentType) => {
         <Icon
           name="arrow-back-ios"
           size={18}
-          style={{marginLeft: 5}}
+          style={{ marginLeft: 5 }}
           color={themes.color.text_color}
         />
       </TouchableOpacity>
@@ -65,9 +58,7 @@ const HeaderComponent = (props: HeaderComponentType) => {
           <TitleText>{title}</TitleText>
           <AddressText>{address}</AddressText>
           <CategoryText>{category}</CategoryText>
-          <RegisterCollectButton
-            onPress={clickRegisterVisit}
-            activeOpacity={0.7}>
+          <RegisterCollectButton onPress={clickRegisterVisit} activeOpacity={0.7}>
             <RegisterCollectText>Agendar coleta</RegisterCollectText>
             <IconMaterial name="plus" size={20} color={themes.color.white} />
           </RegisterCollectButton>

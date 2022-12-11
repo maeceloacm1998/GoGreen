@@ -6,20 +6,18 @@ import Icon from 'react-native-vector-icons/MaterialIcons';
 
 import themes from '../../../../../themes/themes';
 
-import {ButtonFilter, FilterContainer, FilterText} from './styled';
+import { ButtonFilter, FilterContainer, FilterText } from './styled';
 
-export type FilterBarProps = {
+export interface FilterBarProps {
   onClickFilterButton: () => void;
-};
+}
 
 const checkProps = (props: FilterBarProps) => ({
-  onClickFilterButton: props.onClickFilterButton
-    ? props.onClickFilterButton
-    : () => {},
+  onClickFilterButton: props.onClickFilterButton ? props.onClickFilterButton : () => {}
 });
 
 const FilterBar = (props: FilterBarProps) => {
-  const {onClickFilterButton} = checkProps(props);
+  const { onClickFilterButton } = checkProps(props);
 
   return (
     <FilterContainer>

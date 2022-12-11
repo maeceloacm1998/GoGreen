@@ -1,6 +1,6 @@
-import { Company, User } from "..";
+import { Company, User } from '..';
 
 export interface AuthenticationResponseModel {
-  userType: string,
-  data: User | Company
+  userType: string;
+  data: User | Company;
 }

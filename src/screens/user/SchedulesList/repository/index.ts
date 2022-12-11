@@ -1,5 +1,3 @@
-import { ScheduleModel } from "../models/ScheduleModel";
+import { ScheduleModel } from '../models/ScheduleModel';
 
-export async function fetchSchedule(): Promise<Array<ScheduleModel>> {
-  return 
-}
+export async function fetchSchedule(): Promise<ScheduleModel[]> {}

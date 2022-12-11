@@ -1,7 +1,7 @@
-import styled from "styled-components/native";
-import themes from "../../themes/themes";
+import styled from 'styled-components/native';
+import themes from '../../themes/themes';
 
-export type ContainerCheckbox = {
+export interface ContainerCheckbox {
   marginTop: number;
   marginBottom: number;
   marginLeft: number;
@@ -13,10 +13,10 @@ export const Container = styled.View<ContainerCheckbox>`
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  margin-top: ${props => props.marginTop ? props.marginTop : 0}px;
-  margin-bottom: ${props => props.marginBottom ? props.marginBottom : 0}px;
-  margin-left: ${props => props.marginLeft ? props.marginLeft : 0}px;
-  margin-right: ${props => props.marginRight ? props.marginRight : 0}px;
+  margin-top: ${(props) => (props.marginTop ? props.marginTop : 0)}px;
+  margin-bottom: ${(props) => (props.marginBottom ? props.marginBottom : 0)}px;
+  margin-left: ${(props) => (props.marginLeft ? props.marginLeft : 0)}px;
+  margin-right: ${(props) => (props.marginRight ? props.marginRight : 0)}px;
 `;
 
 export const Title = styled.Text`

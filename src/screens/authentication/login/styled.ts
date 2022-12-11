@@ -3,8 +3,8 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 import styled from 'styled-components/native';
 import themes from '../../../themes/themes';
 
-export type TextButtonType = {
-  color: string
+export interface TextButtonType {
+  color: string;
 }
 
 export const Container = styled(SafeAreaView)`
@@ -44,5 +44,5 @@ export const TextButton = styled.Text<TextButtonType>`
   font-size: 16px;
   font-family: ${themes.fonts.jost_medium};
   font-weight: 700;
-  color: ${props => props.color ? props.color : themes.color.text_color};
+  color: ${(props) => (props.color ? props.color : themes.color.text_color)};
 `;

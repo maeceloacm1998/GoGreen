@@ -9,10 +9,13 @@ import {
   Container,
   ContainerData,
   ImageCustom,
-  TitleText,
+  TitleText
 } from './styled';
 
-export type CardType = {
+import Test from '../../assets/images/IconGoGreen.png';
+import themes from '../../themes/themes';
+
+export interface CardType {
   image?: string;
   title: string;
   addressText?: string;
@@ -22,10 +25,7 @@ export type CardType = {
   marginBottom?: number;
   marginLeft?: number;
   marginRight?: number;
-};
-
-import Test from '../../assets/images/IconGoGreen.png';
-import themes from '../../themes/themes';
+}
 
 const translate = (props: CardType) => ({
   image: props.image ? props.image : Test,
@@ -36,7 +36,7 @@ const translate = (props: CardType) => ({
   marginTop: props.marginTop ? props.marginTop : 0,
   marginBottom: props.marginBottom ? props.marginBottom : 0,
   marginLeft: props.marginLeft ? props.marginLeft : 0,
-  marginRight: props.marginRight ? props.marginRight : 0,
+  marginRight: props.marginRight ? props.marginRight : 0
 });
 
 const Card = (props: CardType) => {
@@ -49,7 +49,7 @@ const Card = (props: CardType) => {
     marginBottom,
     marginLeft,
     marginRight,
-    marginTop,
+    marginTop
   } = translate(props);
   return (
     <CardContainer

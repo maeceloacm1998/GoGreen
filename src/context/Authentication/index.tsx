@@ -1,10 +1,10 @@
-import React, {createContext, useContext, useState} from 'react';
-import {AuthenticationResponseModel} from './models/AuthenticationResponseModel';
+import React, { createContext, useContext, useState } from 'react';
+import { AuthenticationResponseModel } from './models/AuthenticationResponseModel';
 
 interface AuthenticationContextData {
-  login(email: string, password: string): Promise<void>;
-  authentication(body: User | Company, userType: string): void;
-  logout(): void;
+  login: (email: string, password: string) => Promise<void>;
+  authentication: (body: User | Company, userType: string) => void;
+  logout: () => void;
   user: User;
   company: Company;
   loggedUser: boolean;
@@ -39,15 +39,15 @@ export interface Company {
 }
 
 const AuthenticationContext = createContext<AuthenticationContextData>(
-  {} as AuthenticationContextData,
+  {} as AuthenticationContextData
 );
 
 export const userTypeProps = {
   user: 'User',
-  company: 'Company',
+  company: 'Company'
 };
 
-export const AuthenticationProvider = ({children}: any) => {
+export const AuthenticationProvider = ({ children }: any) => {
   const [user, setUser] = useState<User>({} as User);
   const [company, setCompany] = useState<Company>({} as Company);
   const [loggedUser, setLoggedUser] = useState<boolean>(false);
@@ -63,13 +63,13 @@ export const AuthenticationProvider = ({children}: any) => {
       email: 'maeceloacm1998@gmail.com',
       state: 'Minas Gerais',
       address: 'Rua hildebrando de oliveira, 234',
-      date: 'Data',
+      date: 'Data'
     };
 
     // Fazer a requisição do login
     const res: AuthenticationResponseModel = {
       userType: userTypeProps.user,
-      data: fakeUser,
+      data: fakeUser
     };
 
     authentication(res.data, res.userType);
@@ -104,7 +104,7 @@ export const AuthenticationProvider = ({children}: any) => {
         loggedCompany,
         logout,
         user,
-        company,
+        company
       }}>
       {children}
     </AuthenticationContext.Provider>

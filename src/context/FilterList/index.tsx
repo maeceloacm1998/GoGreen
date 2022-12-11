@@ -1,41 +1,36 @@
-import React, {createContext, useContext, useState} from 'react';
+/* eslint-disable @typescript-eslint/no-shadow */
+import React, { createContext, useContext, useState } from 'react';
 
 interface FilterListContextData {
-  addFilter(filterName: string): void;
-  removeFilter(filterName: string): void;
-  addFilterSelectedList(filterSelectedList: Array<string>): void;
-  removeAllFilters(): void;
-  isEmptyList(): boolean;
-  filterSelectedList: Array<string>;
+  addFilter: (filterName: string) => void;
+  removeFilter: (filterName: string) => void;
+  addFilterSelectedList: (filterSelectedList: string[]) => void;
+  removeAllFilters: () => void;
+  isEmptyList: () => boolean;
+  filterSelectedList: string[];
 }
 
-const FilterListContext = createContext<FilterListContextData>(
-  {} as FilterListContextData,
-);
+const FilterListContext = createContext<FilterListContextData>({} as FilterListContextData);
 
-export const FilterListProvider = ({children}: any) => {
-  const [filterSelectedList, setFilterSelectedList] = useState<Array<string>>(
-    [],
-  );
+export const FilterListProvider = ({ children }: any) => {
+  const [filterSelectedList, setFilterSelectedList] = useState<string[]>([]);
 
   function addFilter(filterName: string) {
     if (isEmptyList()) {
       setFilterSelectedList([filterName]);
     } else {
-      setFilterSelectedList(oldValue => [...oldValue, filterName]);
+      setFilterSelectedList((oldValue) => [...oldValue, filterName]);
     }
   }
 
   function removeFilter(filterName: string) {
     if (!isEmptyList()) {
-      const removeFilterName = filterSelectedList.filter(
-        item => item != filterName,
-      );
+      const removeFilterName = filterSelectedList.filter((item) => item !== filterName);
       setFilterSelectedList(removeFilterName);
     }
   }
 
-  function addFilterSelectedList(filterSelectedList: Array<string>) {
+  function addFilterSelectedList(filterSelectedList: string[]) {
     setFilterSelectedList(filterSelectedList);
   }
 
@@ -55,7 +50,7 @@ export const FilterListProvider = ({children}: any) => {
         removeFilter,
         addFilterSelectedList,
         removeAllFilters,
-        isEmptyList,
+        isEmptyList
       }}>
       {children}
     </FilterListContext.Provider>

@@ -1,16 +1,16 @@
-import {GestureHandlerRootView} from 'react-native-gesture-handler';
+import { GestureHandlerRootView } from 'react-native-gesture-handler';
 import React from 'react';
-import {NavigationContainer} from '@react-navigation/native';
+import { NavigationContainer } from '@react-navigation/native';
 
 import AuthenticationNavigator from './main.routes';
 import UserNavigator from './user.routes';
-import {useAuthentication} from '../context/Authentication';
+import { useAuthentication } from '../context/Authentication';
 
 export default function Navigation() {
-  const {loggedUser, loggedCompany} = useAuthentication();
+  const { loggedUser, loggedCompany } = useAuthentication();
 
   return (
-    <GestureHandlerRootView style={{flex: 1}}>
+    <GestureHandlerRootView style={{ flex: 1 }}>
       <NavigationContainer>
         {loggedUser ? (
           <UserNavigator />

@@ -1,5 +1,5 @@
-import styled from "styled-components/native";
-import themes from "../../../../../themes/themes";
+import styled from 'styled-components/native';
+import themes from '../../../../../themes/themes';
 
 export const FilterContainer = styled.View`
   flex-direction: row;

@@ -25,13 +25,13 @@ const SchedulesList = () => {
     setLoading(false);
   }
 
-  function HandleCardWithState(props: any) {
+  function HandleCardWithState(props: ScheduleModel) {
     return (
       <CardWithState
         key={props.id}
-        title={props.name}
+        title={props.product}
         dtCreated={props.dtCreated}
-        state={props.state}
+        state={props.statusScheduling}
         categoryText={props.category}
         image={''}
         marginTop={12}
@@ -46,14 +46,14 @@ const SchedulesList = () => {
       <Title>Agendamentos</Title>
       <Subtitle>Todos os agendamentos realizados por você :)</Subtitle>
 
-      {/* <FlatList
+      <FlatList
         data={scheduleList}
         renderItem={data => HandleCardWithState(data.item)}
         keyExtractor={item => item.id}
         showsVerticalScrollIndicator={false}
-      /> */}
-
-      <HandleCardWithState />
+        refreshing={loading}
+        onRefresh={() => fetchScheduleList()}
+      />
     </Container>
   );
 };

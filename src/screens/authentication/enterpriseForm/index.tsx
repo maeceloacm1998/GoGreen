@@ -77,7 +77,12 @@ const EnterpriseForm = ({navigation}: ScreenProps) => {
   }
 
   function onSubmit(data: any) {
-    const userModel: EnterpriseFormModel = data;
+    const userModel: EnterpriseFormModel = {
+      ...data,
+      address: addressComplete.logradouro,
+      city: addressComplete.localidade,
+      cep: addressComplete.cep,
+    };
     handleCreateUser(userModel, category);
   }
 
@@ -147,6 +152,7 @@ const EnterpriseForm = ({navigation}: ScreenProps) => {
           }}
           marginBottom={10}
           keyboardType="numeric"
+          requiredRule={false}
         />
 
         <InputForm

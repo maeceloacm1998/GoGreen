@@ -1,5 +1,6 @@
 import React, {createContext, useContext, useState} from 'react';
 import {AuthenticationResponseModel} from './models/AuthenticationResponseModel';
+import {auth} from './repository';
 
 interface AuthenticationContextData {
   login(email: string, password: string): Promise<void>;
@@ -43,7 +44,7 @@ const AuthenticationContext = createContext<AuthenticationContextData>(
 );
 
 export const userTypeProps = {
-  user: 'User',
+  user: 'user',
   company: 'Company',
 };
 
@@ -54,25 +55,8 @@ export const AuthenticationProvider = ({children}: any) => {
   const [loggedCompany, setLoggedCompany] = useState<boolean>(false);
 
   async function login(email: string, password: string) {
-    const fakeUser: User = {
-      id: 1,
-      cep: '31550500',
-      city: 'Belo Horizonte',
-      name: 'Marcelo',
-      password: '12341',
-      email: 'maeceloacm1998@gmail.com',
-      state: 'Minas Gerais',
-      address: 'Rua hildebrando de oliveira, 234',
-      date: 'Data',
-    };
-
-    // Fazer a requisição do login
-    const res: AuthenticationResponseModel = {
-      userType: userTypeProps.user,
-      data: fakeUser,
-    };
-
-    authentication(res.data, res.userType);
+    const res = await auth(email, password);
+    authentication(res.user, res.userType);
   }
 
   function authentication(body: User | Company, userType: string) {

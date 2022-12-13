@@ -34,7 +34,6 @@ const Login = ({navigation}: ScreenProps) => {
     try {
       await login(email, password);
     } catch (e) {
-      // Validar ERRO DE LOGIN
       console.log(e);
     }
   }

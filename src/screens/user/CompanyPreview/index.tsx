@@ -22,19 +22,19 @@ const CompanyPreview = ({ route, navigation }: ScreenProps) => {
   const [loadingMap, setLoadingMap] = useState<boolean>(false);
 
   useEffect(() => {
-    fetchLatLogProps();
     fetchCompanyInformation();
   }, []);
 
   async function fetchCompanyInformation() {
     const res = await fetchCompanyById(route.params?.id);
     setCompany(res);
+    fetchLatLogProps(res.address);
   }
 
-  async function fetchLatLogProps() {
+  async function fetchLatLogProps(address: string) {
     setLoadingMap(true);
-    const latLong = await fetchLatLongWithAddress(company.address);
-    setLatLong(getLatLong(company.address, latLong));
+    const latLong = await fetchLatLongWithAddress(address);
+    setLatLong(getLatLong(address, latLong));
     setLoadingMap(false);
   }
 
@@ -56,7 +56,7 @@ const CompanyPreview = ({ route, navigation }: ScreenProps) => {
         </Title>
 
         <Description marginBottom={10}>
-          {`Rua Hidebrando de Oliveira, 235, ${company.city}, ${company.state}`}
+          {`${company.address}, ${company.city}, ${company.state}`}
         </Description>
 
         <Maps loading={loadingMap} latitude={latLong.latitude} longitude={latLong.longitude} />

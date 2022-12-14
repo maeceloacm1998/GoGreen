@@ -10,6 +10,7 @@ export default {
     background_card_option_color: '#F6F6F6',
     divider_color: '#ECF1FF',
     white: '#FFFFFF',
+    black: '#000000',
     error: '#CC3A3A'
   },
   fonts: {

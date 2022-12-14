@@ -6,6 +6,7 @@ import CompanyPreview from '../screens/user/CompanyPreview';
 import ButtonNavigation from './bottomNavigation/buttomNavigation.routes';
 
 import { FilterListProviderHook } from '../context';
+import ScheduleForm from '../screens/authentication/scheduleForm';
 
 const Stack = createStackNavigator();
 
@@ -30,6 +31,13 @@ function UserRoutes() {
         <Stack.Screen
           name="CompanyPreview"
           component={CompanyPreview}
+          options={{
+            headerShown: false
+          }}
+        />
+        <Stack.Screen
+          name="ScheduleForm"
+          component={ScheduleForm}
           options={{
             headerShown: false
           }}

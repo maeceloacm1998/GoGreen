@@ -13,3 +13,4 @@ export const CATEGORY_LIST_PATH = 'e03566fe-1ba0-4cf8-8d1e-2e24d28385d8';
 export const SCHEDULING_LIST_PATH = 'Scheduling/getAll';
 export const SCHEDULING_SEARCH_PATH = 'Scheduling/search';
 export const SCHEDULING_UPDATE_PATH = 'Scheduling/update';
+export const REGISTER_SCHEDULE_PATH = 'Scheduling/register';

@@ -8,7 +8,7 @@ import { Container, ErrorContainer, ErrorText, TextInputCustom } from './styled'
 interface Props extends TextInputProps {
   nameId: string;
   placeholder: string;
-  control: Control;
+  control: Control<any>;
   formState: FieldError | Merge<FieldError, FieldErrorsImpl<any>> | undefined;
   requiredRule: boolean;
   marginTop?: number;

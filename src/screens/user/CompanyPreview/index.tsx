@@ -7,14 +7,17 @@ import Maps from './components/Maps';
 import { fetchCompanyById } from './repository';
 import { CompaniesListModel } from '../../../models/CompaniesListModel';
 
-import { ScreenProps } from '../../../router/models/ScreenPropsModel';
+import { StackParamsList } from '../../../router/models/ScreenPropsModel';
 
 import { fetchLatLongWithAddress, getLatLong } from '../../../services/getLatLongWithAddress';
 import { LatLongModel } from '../../../services/getLatLongWithAddress/models/LatLongModel';
 
 import { Container, ContainerData, Description, Title } from './styled';
+import { StackScreenProps } from '@react-navigation/stack';
 
-const CompanyPreview = ({ route, navigation }: ScreenProps) => {
+type CompanyPreviewProps = StackScreenProps<StackParamsList, 'CompanyPreview'>;
+
+const CompanyPreview = ({ route, navigation }: CompanyPreviewProps) => {
   const goBackListener = () => navigation.goBack();
 
   const [company, setCompany] = useState<CompaniesListModel>({} as CompaniesListModel);
@@ -31,6 +34,10 @@ const CompanyPreview = ({ route, navigation }: ScreenProps) => {
     fetchLatLogProps(res.address);
   }
 
+  const clickRegisterVisitListener = () => {
+    navigation.navigate('ScheduleForm', { idCompany: route.params?.id });
+  };
+
   async function fetchLatLogProps(address: string) {
     setLoadingMap(true);
     const latLong = await fetchLatLongWithAddress(address);
@@ -45,6 +52,7 @@ const CompanyPreview = ({ route, navigation }: ScreenProps) => {
         address={`${company.city} - ${company.state}`}
         category={company.category}
         clickGoBackListener={goBackListener}
+        clickRegisterVisitListener={clickRegisterVisitListener}
       />
 
       <ContainerData>

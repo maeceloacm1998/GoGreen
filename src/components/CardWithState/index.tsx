@@ -30,7 +30,7 @@ export interface State {
   name: string;
 }
 
-const states = {
+export const states = {
   inProgress: 'Em andamento',
   cancel: 'Cancelado',
   finish: 'Concluido'

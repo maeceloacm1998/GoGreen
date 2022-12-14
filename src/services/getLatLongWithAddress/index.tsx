@@ -9,7 +9,6 @@ export async function fetchLatLongWithAddress(address: string): Promise<LatLongR
   const addressResult = convertAddress(address);
   const url = `${BASE_URL}q=${addressResult}+Brazil&format=geojson`;
 
-  console.log('REQUEST --->', url);
   return await fetch(url)
     // eslint-disable-next-line @typescript-eslint/promise-function-async
     .then((result) => result.json())

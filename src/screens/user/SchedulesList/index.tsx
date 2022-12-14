@@ -1,6 +1,7 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 /* eslint-disable @typescript-eslint/no-floating-promises */
 import React, { useEffect, useState } from 'react';
+import { FlatList } from 'react-native';
 
 import CardWithState from '../../../components/CardWithState';
 import Loading from '../../../components/Loading';

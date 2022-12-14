@@ -14,8 +14,8 @@ export const ContainerStatus = styled.View`
 `;
 
 export const Image = styled.Image`
-  width: 200px;
-  height: 200px;
+  width: 125px;
+  height: 125px;
 `;
 
 export const Title = styled.Text`

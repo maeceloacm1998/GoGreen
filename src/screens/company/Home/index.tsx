@@ -11,6 +11,7 @@ import Loading from '../../../components/Loading';
 import { useAuthentication } from '../../../context/Authentication';
 import { ScheduleModel } from '../../user/SchedulesList/models/ScheduleModel';
 import CardWithState from '../../../components/CardWithState';
+import GenericError from '../../../components/GenericError';
 
 const HomeCompany = ({ navigation }: ScreenProps) => {
   const navigateFilterList = () => navigation.navigate('FilterList');
@@ -80,6 +81,17 @@ const HomeCompany = ({ navigation }: ScreenProps) => {
 
   return loading ? (
     <Loading />
+  ) : error ? (
+    <Container>
+      <Header username={company.name} />
+      <HeaderTextComponent />
+      {/* <FilterBar onClickFilterButton={navigateFilterList} /> */}
+
+      <GenericError
+        title="Nenhum agendamento disponpível"
+        description="Aguarde um cliente cadastrar um agendamento :p"
+      />
+    </Container>
   ) : (
     <Container>
       <Header username={company.name} />

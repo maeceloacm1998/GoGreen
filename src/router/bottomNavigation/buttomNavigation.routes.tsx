@@ -29,13 +29,13 @@ function handleIconAndColor(
   let backgroundColor = themes.color.white;
 
   switch (route.name) {
-    case screensName.Home: {
+    case 'Inicio': {
       iconName = focused ? 'home' : 'home-outline';
       iconColor = focused ? themes.color.white : themes.color.primary;
       backgroundColor = focused ? themes.color.primary : themes.color.white;
       break;
     }
-    case screensName.Schedule: {
+    case 'Agendamentos': {
       iconName = focused ? 'ios-list-circle-sharp' : 'ios-list-circle-outline';
       iconColor = focused ? themes.color.white : themes.color.primary;
       backgroundColor = focused ? themes.color.primary : themes.color.white;
@@ -86,24 +86,17 @@ function ButtonNavigation() {
           borderRadius: 15
         }
       })}
-      initialRouteName="Login">
+      initialRouteName="Home">
       <Tab.Screen
-        name={screensName.Home}
+        name="Inicio"
         component={Home}
         options={{
           headerShown: false
         }}
       />
       <Tab.Screen
-        name={screensName.Schedule}
+        name="Agendamentos"
         component={SchedulesList}
-        options={{
-          headerShown: false
-        }}
-      />
-      <Tab.Screen
-        name={screensName.Profile}
-        component={Profile}
         options={{
           headerShown: false
         }}

@@ -13,6 +13,7 @@ import { ScreenProps } from '../../../router/models/ScreenPropsModel';
 import { Container, HeaderText, TitleDark, TitleLight } from './styled';
 import Loading from '../../../components/Loading';
 import { useAuthentication } from '../../../context/Authentication';
+import GenericError from '../../../components/GenericError';
 
 const Home = ({ navigation }: ScreenProps) => {
   const navigateFilterList = () => navigation.navigate('FilterList');
@@ -76,6 +77,17 @@ const Home = ({ navigation }: ScreenProps) => {
 
   return loading ? (
     <Loading />
+  ) : error ? (
+    <Container>
+      <Header username={user.name} />
+      <HeaderTextComponent />
+      {/* <FilterBar onClickFilterButton={navigateFilterList} /> */}
+
+      <GenericError
+        title="Nenhuma empresa cadastrada no aplicativo :("
+        description="Volte novamente mais tarde :p"
+      />
+    </Container>
   ) : (
     <Container>
       <Header username={user.name} />

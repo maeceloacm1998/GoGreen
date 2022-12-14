@@ -38,7 +38,7 @@ export const states = {
 
 const checkProps = (props: CardWithStateProps) => ({
   image: props.image ? props.image : Test,
-  title: props.title ? props.title : 'default',
+  title: props.title ? `${props.title.substring(0, 16)}...` : 'default',
   dtCreated: props.dtCreated ? props.dtCreated.substring(0, 16) : 'default',
   categoryText: props.categoryText ? props.categoryText : 'default',
   state: props.state ? props.state : states.finish,

@@ -4,6 +4,7 @@ import React, { useEffect, useState } from 'react';
 import { FlatList } from 'react-native';
 
 import CardWithState from '../../../components/CardWithState';
+import GenericError from '../../../components/GenericError';
 import Loading from '../../../components/Loading';
 import { useAuthentication } from '../../../context/Authentication';
 
@@ -15,6 +16,7 @@ import { Container, Subtitle, Title } from './styled';
 const SchedulesList = () => {
   const { user } = useAuthentication();
   const [scheduleList, setScheduleList] = useState<Array<ScheduleModel>>();
+  const [error, setError] = useState<boolean>(false);
   const [loading, setLoading] = useState<boolean>(false);
 
   useEffect(() => {
@@ -25,8 +27,17 @@ const SchedulesList = () => {
     setLoading(true);
     const res = await fetchSchedule(user.id.toString());
     setScheduleList(res);
+    isEmptyList(res);
 
     setLoading(false);
+  }
+
+  function isEmptyList(schedulingList: Array<ScheduleModel>) {
+    if (schedulingList.length == 0) {
+      setError(true);
+    } else {
+      setError(false);
+    }
   }
 
   function HandleCardWithState(props: ScheduleModel) {
@@ -45,6 +56,11 @@ const SchedulesList = () => {
 
   return loading ? (
     <Loading />
+  ) : error ? (
+    <GenericError
+      title="Nenhum agendamento disponpível"
+      description="Agende uma coleta para alguma empresa disponível :p"
+    />
   ) : (
     <Container>
       <Title>Agendamentos {}</Title>

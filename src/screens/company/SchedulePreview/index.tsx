@@ -3,7 +3,7 @@ import { ScrollView, Text, TouchableOpacity } from 'react-native';
 
 import Icon from 'react-native-vector-icons/MaterialIcons';
 
-import ImagePNG from '../../../assets/images/plant_login.png';
+import ImagePNG from '../../../assets/images/schedule_user.png';
 import InProgress from '../../../assets/animations/status.json';
 import Cancel from '../../../assets/animations/status_cancel.json';
 import Finish from '../../../assets/animations/status_success.json';
@@ -49,8 +49,8 @@ const SchedulePreview = ({ route, navigation }: ScreenProps) => {
   async function fetchScheduleItem() {
     setLoading(true);
     const res = await getScheduleItemPerId(route.params?.id);
-    console.log(res);
     await fetchClient();
+
     setScheduleItem(res);
     setLoading(false);
   }
@@ -115,6 +115,7 @@ const SchedulePreview = ({ route, navigation }: ScreenProps) => {
       statusScheduling: states.finish
     };
     await updateSchedule(newScheduleItem);
+    fetchScheduleItem();
   }
 
   return loading ? (

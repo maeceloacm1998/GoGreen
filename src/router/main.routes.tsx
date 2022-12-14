@@ -5,10 +5,8 @@ import Login from '../screens/authentication/login';
 import SelectionRegisterType from '../screens/authentication/selectionRegisterType';
 import UserForm from '../screens/authentication/userForm';
 import EnterpriseForm from '../screens/authentication/enterpriseForm';
-import ScheduleForm from '../screens/authentication/scheduleForm';
-import { StackParamsList } from './models/ScreenPropsModel';
 
-const Stack = createStackNavigator<StackParamsList>();
+const Stack = createStackNavigator();
 
 function MainRoute() {
   return (
@@ -37,13 +35,6 @@ function MainRoute() {
       <Stack.Screen
         name="EnterpriseForm"
         component={EnterpriseForm}
-        options={{
-          headerShown: false
-        }}
-      />
-      <Stack.Screen
-        name="ScheduleForm"
-        component={ScheduleForm}
         options={{
           headerShown: false
         }}

@@ -1,6 +1,4 @@
-import { StackParamsList } from '../models/ScreenPropsModel';
-
-export const screensName: StackParamsList = {
+export const screensName = {
   Home: 'Home',
   Schedule: 'Schedule',
   Profile: 'Profile',
@@ -10,5 +8,6 @@ export const screensName: StackParamsList = {
   Login: 'Login',
   SelectionRegisterType: 'SelectionRegisterType',
   UserForm: 'UserForm',
-  EnterpriseForm: 'EnterpriseForm'
+  EnterpriseForm: 'EnterpriseForm',
+  ScheduleForm: 'ScheduleForm'
 };

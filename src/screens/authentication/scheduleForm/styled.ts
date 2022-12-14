@@ -30,21 +30,10 @@ export const GoBackButton = styled(TouchableOpacity).attrs({
   activeOpacity: 0.7
 })``;
 
-export const StepContainer = styled.View`
-  align-items: center;
-  padding: 20px;
-`;
-
-export const StepText = styled.Text`
-  font-size: 12px;
-  font-family: ${themes.fonts.roboto_regular};
-  color: #43496c;
-`;
-
 export const Content = styled.View`
   display: flex;
   align-items: center;
-  padding: 0 10px;
+  padding: 10px;
 `;
 
 export const Title = styled.Text`

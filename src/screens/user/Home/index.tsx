@@ -54,7 +54,7 @@ const Home = ({ navigation }: ScreenProps) => {
       <HeaderText>
         <TitleDark>
           Precisa de ajuda com seu lixo eletrônico?
-          <TitleLight>ache a empresa certa para o descarte.</TitleLight>
+          <TitleLight> ache a empresa certa para o descarte.</TitleLight>
         </TitleDark>
       </HeaderText>
     );

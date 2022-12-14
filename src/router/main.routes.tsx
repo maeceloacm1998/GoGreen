@@ -1,5 +1,5 @@
 import React from 'react';
-import {createStackNavigator} from '@react-navigation/stack';
+import { createStackNavigator } from '@react-navigation/stack';
 
 import Login from '../screens/authentication/Login';
 import SelectionRegisterType from '../screens/authentication/SelectionRegisterType';
@@ -15,28 +15,28 @@ function MainRoute() {
         name="Login"
         component={Login}
         options={{
-          headerShown: false,
+          headerShown: false
         }}
       />
       <Stack.Screen
         name="SelectionRegisterType"
         component={SelectionRegisterType}
         options={{
-          headerShown: false,
+          headerShown: false
         }}
       />
       <Stack.Screen
         name="UserForm"
         component={UserForm}
         options={{
-          headerShown: false,
+          headerShown: false
         }}
       />
       <Stack.Screen
         name="EnterpriseForm"
         component={EnterpriseForm}
         options={{
-          headerShown: false,
+          headerShown: false
         }}
       />
     </Stack.Navigator>

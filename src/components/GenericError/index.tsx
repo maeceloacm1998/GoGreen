@@ -2,20 +2,20 @@ import React from 'react';
 
 import GenericErrorImage from '../../assets/images/generic_error_image.png';
 
-import {Container, Description, Image, Title} from './styled';
+import { Container, Description, Image, Title } from './styled';
 
-export type GenericErrorProps = {
+export interface GenericErrorProps {
   title: string;
   description: string;
-};
+}
 
 const checkProps = (props: GenericErrorProps) => ({
   title: props.title ? props.title : 'generic message',
-  description: props.description ? props.description : 'generic message',
+  description: props.description ? props.description : 'generic message'
 });
 
 const GenericError = (props: GenericErrorProps) => {
-  const {title, description} = checkProps(props);
+  const { title, description } = checkProps(props);
 
   return (
     <Container>

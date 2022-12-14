@@ -1,16 +1,17 @@
-import React, {useEffect, useState} from 'react';
-import {FlatList} from 'react-native';
+/* eslint-disable @typescript-eslint/no-unused-vars */
+/* eslint-disable @typescript-eslint/no-floating-promises */
+import React, { useEffect, useState } from 'react';
 
 import CardWithState from '../../../components/CardWithState';
 import Loading from '../../../components/Loading';
 
-import {ScheduleModel} from './models/ScheduleModel';
-import {fetchSchedule} from './repository';
+import { ScheduleModel } from './models/ScheduleModel';
+import { fetchSchedule } from './repository';
 
-import {Container, Subtitle, Title} from './styled';
+import { Container, Subtitle, Title } from './styled';
 
 const SchedulesList = () => {
-  const [scheduleList, setScheduleList] = useState<Array<ScheduleModel>>();
+  const [scheduleList, setScheduleList] = useState<ScheduleModel[]>();
   const [loading, setLoading] = useState<boolean>(false);
 
   useEffect(() => {

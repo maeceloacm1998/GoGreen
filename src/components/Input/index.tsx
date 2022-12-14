@@ -1,6 +1,6 @@
 import React from 'react';
-import {TextInputProps} from 'react-native';
-import {TextInputCustom} from './styled';
+import { TextInputProps } from 'react-native';
+import { TextInputCustom } from './styled';
 
 export interface InputTypes extends TextInputProps {
   marginTop?: number;
@@ -9,13 +9,7 @@ export interface InputTypes extends TextInputProps {
   marginRight?: number;
 }
 
-const Input = ({
-  marginTop,
-  marginBottom,
-  marginLeft,
-  marginRight,
-  ...rest
-}: InputTypes) => {
+const Input = ({ marginTop, marginBottom, marginLeft, marginRight, ...rest }: InputTypes) => {
   return (
     <TextInputCustom
       marginTop={marginTop}

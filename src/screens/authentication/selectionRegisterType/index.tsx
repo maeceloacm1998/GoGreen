@@ -7,18 +7,11 @@ import CardOption from './components/cardOption';
 
 import Icon from 'react-native-vector-icons/MaterialIcons';
 
-import {ScreenProps} from '../../../router/models/ScreenPropsModel';
-import {
-  Container,
-  ContainerOptions,
-  GoBackButton,
-  GoBackText,
-  Subtitle,
-  Title,
-} from './styled';
+import { ScreenProps } from '../../../router/models/ScreenPropsModel';
+import { Container, ContainerOptions, GoBackButton, GoBackText, Subtitle, Title } from './styled';
 import themes from '../../../themes/themes';
 
-const SelectionRegisterType = ({navigation}: ScreenProps) => {
+const SelectionRegisterType = ({ navigation }: ScreenProps) => {
   const ENTERPRISE_TYPE = 'Empresa';
   const CLIENT_TYPE = 'Cliente';
 
@@ -37,7 +30,7 @@ const SelectionRegisterType = ({navigation}: ScreenProps) => {
           name="arrow-back-ios"
           size={20}
           color={themes.color.primary}
-          style={{marginVertical: 16, marginHorizontal: 10}}
+          style={{ marginVertical: 16, marginHorizontal: 10 }}
         />
         <GoBackText>Voltar</GoBackText>
       </GoBackButton>
@@ -46,7 +39,7 @@ const SelectionRegisterType = ({navigation}: ScreenProps) => {
       <Subtitle>Escolha o tipo de usuário para o cadastro :)</Subtitle>
       <ContainerOptions>
         <CardOption
-          clickCardOptionListener={item => handleClickCardOption(item)}
+          clickCardOptionListener={(item) => handleClickCardOption(item)}
           title={CLIENT_TYPE}
           image={ImageUser}
         />

@@ -1,15 +1,14 @@
 export interface LatLongResponseModel {
   type: string;
   licence: string;
-  features: Array<FeaturesItem>;
+  features: FeaturesItem[];
 }
 
 export interface FeaturesItem {
   type: string;
   properties: Properties;
-  bbox: Array<number>;
+  bbox: number[];
   geometry: Geometry;
-  
 }
 
 interface Properties {
@@ -25,5 +24,5 @@ interface Properties {
 
 interface Geometry {
   type: string;
-  coordinates: Array<number>;
+  coordinates: number[];
 }

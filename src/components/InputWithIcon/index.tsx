@@ -1,7 +1,7 @@
 import React from 'react';
-import {TextInputProps} from 'react-native';
+import { TextInputProps } from 'react-native';
 
-import {Container, TextInputCustom} from './styled';
+import { Container, TextInputCustom } from './styled';
 
 export interface InputWithIconTypes extends TextInputProps {
   icon: React.ReactNode;

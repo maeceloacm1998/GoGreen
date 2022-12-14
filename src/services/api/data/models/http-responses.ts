@@ -1,5 +1,5 @@
-export type HttpResponse = {
-  message?: string,
-  code: number,
-  body: any
+export interface HttpResponse {
+  message?: string;
+  code: number;
+  body: any;
 }

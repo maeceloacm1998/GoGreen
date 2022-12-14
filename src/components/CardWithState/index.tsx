@@ -1,7 +1,7 @@
 import React from 'react';
 import Lottie from 'lottie-react-native';
 
-import {CardType} from '../Card';
+import { CardType } from '../Card';
 
 import Test from '../../assets/images/IconGoGreen.png';
 import InProgress from '../../assets/animations/status.json';
@@ -17,7 +17,7 @@ import {
   ImageCustom,
   StatusContainer,
   StatusText,
-  TitleText,
+  TitleText
 } from './styled';
 
 export interface CardWithStateProps extends CardType {
@@ -25,15 +25,15 @@ export interface CardWithStateProps extends CardType {
   state: string;
 }
 
-export type State = {
+export interface State {
   icon: string;
   name: string;
-};
+}
 
 const states = {
   inProgress: 'Em andamento',
   cancel: 'Cancelado',
-  finish: 'Concluido',
+  finish: 'Concluido'
 };
 
 const checkProps = (props: CardWithStateProps) => ({
@@ -45,7 +45,7 @@ const checkProps = (props: CardWithStateProps) => ({
   marginTop: props.marginTop ? props.marginTop : 0,
   marginBottom: props.marginBottom ? props.marginBottom : 0,
   marginLeft: props.marginLeft ? props.marginLeft : 0,
-  marginRight: props.marginRight ? props.marginRight : 0,
+  marginRight: props.marginRight ? props.marginRight : 0
 });
 
 const CardWithState = (props: CardWithStateProps) => {
@@ -58,27 +58,27 @@ const CardWithState = (props: CardWithStateProps) => {
     marginRight,
     marginTop,
     state,
-    title,
+    title
   } = checkProps(props);
 
   function selectState(): State {
     if (state.toLowerCase() === states.inProgress.toLowerCase()) {
       return {
         icon: JSON.stringify(InProgress),
-        name: states.inProgress,
+        name: states.inProgress
       };
     }
 
     if (state.toLowerCase() === states.cancel.toLowerCase()) {
       return {
         icon: JSON.stringify(Cancel),
-        name: states.cancel,
+        name: states.cancel
       };
     }
 
     return {
       icon: JSON.stringify(Finish),
-      name: states.finish,
+      name: states.finish
     };
   }
 
@@ -90,7 +90,7 @@ const CardWithState = (props: CardWithStateProps) => {
           source={JSON.parse(stateResult.icon)}
           autoPlay
           loop
-          style={{width: 30, height: 30}}
+          style={{ width: 30, height: 30 }}
         />
         <StatusText>{stateResult.name}</StatusText>
       </StatusContainer>

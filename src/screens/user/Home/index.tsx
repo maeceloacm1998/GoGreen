@@ -1,28 +1,28 @@
-import React, {useState, useEffect} from 'react';
-import {FlatList} from 'react-native';
+/* eslint-disable @typescript-eslint/no-floating-promises */
+/* eslint-disable @typescript-eslint/no-unused-vars */
+import React, { useState, useEffect } from 'react';
+import { FlatList } from 'react-native';
 
 import Header from './components/Header';
 import Card from '../../../components/Card';
-import {getCompaniesList} from './repository';
+import { getCompaniesList } from './repository';
 
-import {CompaniesListModel} from '../../../models/CompaniesListModel';
-import {ScreenProps} from '../../../router/models/ScreenPropsModel';
+import { CompaniesListModel } from '../../../models/CompaniesListModel';
+import { ScreenProps } from '../../../router/models/ScreenPropsModel';
 
-import {Container, HeaderText, TitleDark, TitleLight} from './styled';
+import { Container, HeaderText, TitleDark, TitleLight } from './styled';
 import Loading from '../../../components/Loading';
-import {useAuthentication} from '../../../context/Authentication';
+import { useAuthentication } from '../../../context/Authentication';
 
-const Home = ({navigation}: ScreenProps) => {
+const Home = ({ navigation }: ScreenProps) => {
   const navigateFilterList = () => navigation.navigate('FilterList');
 
-  const {user} = useAuthentication();
+  const { user } = useAuthentication();
 
   const [loading, setLoading] = useState<boolean>(false);
   const [error, setError] = useState<boolean>(false);
 
-  const [companiesList, setCompaniesList] = useState<Array<CompaniesListModel>>(
-    [],
-  );
+  const [companiesList, setCompaniesList] = useState<CompaniesListModel[]>([]);
 
   useEffect(() => {
     fetchCompaniesList();
@@ -41,8 +41,8 @@ const Home = ({navigation}: ScreenProps) => {
     setLoading(status);
   }
 
-  function isEmptyList(categoryList: Array<CompaniesListModel>) {
-    if (categoryList.length == 0) {
+  function isEmptyList(categoryList: CompaniesListModel[]) {
+    if (categoryList.length === 0) {
       setError(true);
     } else {
       setError(false);
@@ -68,7 +68,7 @@ const Home = ({navigation}: ScreenProps) => {
         addressText={`${props.city} - ${props.state}`}
         categoryText={props.category}
         image={''}
-        onClick={() => navigation.navigate('CompanyPreview', {id: props.id})}
+        onClick={() => navigation.navigate('CompanyPreview', { id: props.id })}
         marginTop={12}
       />
     );
@@ -84,8 +84,8 @@ const Home = ({navigation}: ScreenProps) => {
 
       <FlatList
         data={companiesList}
-        renderItem={data => HandleCard(data.item)}
-        keyExtractor={item => item.id}
+        renderItem={(data) => HandleCard(data.item)}
+        keyExtractor={(item) => item.id}
         showsVerticalScrollIndicator={false}
       />
     </Container>

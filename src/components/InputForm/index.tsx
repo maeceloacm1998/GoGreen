@@ -1,15 +1,9 @@
 import React from 'react';
-import {TextInputProps} from 'react-native';
+import { TextInputProps } from 'react-native';
 
-import {
-  Controller,
-  Control,
-  FieldError,
-  FieldErrorsImpl,
-  Merge,
-} from 'react-hook-form';
+import { Controller, Control, FieldError, FieldErrorsImpl, Merge } from 'react-hook-form';
 
-import {Container, ErrorContainer, ErrorText, TextInputCustom} from './styled';
+import { Container, ErrorContainer, ErrorText, TextInputCustom } from './styled';
 
 interface Props extends TextInputProps {
   nameId: string;
@@ -44,9 +38,9 @@ export function InputForm({
       <Controller
         control={control}
         rules={{
-          required: requiredRule,
+          required: requiredRule
         }}
-        render={({field: {onChange, value}}) => (
+        render={({ field: { onChange, value } }) => (
           <TextInputCustom
             placeholder={requiredRule ? `${placeholder} *` : placeholder}
             onChangeText={onChange}

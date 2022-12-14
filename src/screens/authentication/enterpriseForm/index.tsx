@@ -1,56 +1,46 @@
-import React, {useCallback, useState} from 'react';
-import {ScrollView, ActivityIndicator} from 'react-native';
-import {useForm} from 'react-hook-form';
-import {debounce} from 'lodash';
+/* eslint-disable array-callback-return */
+/* eslint-disable @typescript-eslint/no-shadow */
+/* eslint-disable @typescript-eslint/no-floating-promises */
+import React, { useCallback, useState } from 'react';
+import { ScrollView, ActivityIndicator } from 'react-native';
+import { useForm } from 'react-hook-form';
+import { debounce } from 'lodash';
 
-import {ScreenProps} from '../../../router/models/ScreenPropsModel';
-import {InputForm} from '../../../components/InputForm';
-import SelectListComponent, {
-  SelectListItemType,
-} from '../../../components/SelectList';
+import { ScreenProps } from '../../../router/models/ScreenPropsModel';
+import { InputForm } from '../../../components/InputForm';
+import SelectListComponent, { SelectListItemType } from '../../../components/SelectList';
 
-import {createUser} from './repository';
-import {
-  useAuthentication,
-  userTypeProps,
-} from '../../../context/Authentication';
-import {EnterpriseFormModel} from './models/EnterpriseFormModel';
+import { createUser } from './repository';
+import { useAuthentication, userTypeProps } from '../../../context/Authentication';
+import { EnterpriseFormModel } from './models/EnterpriseFormModel';
 
 import Icon from 'react-native-vector-icons/MaterialIcons';
 
-import {
-  Button,
-  Container,
-  GoBackButton,
-  GoBackText,
-  Subtitle,
-  TextButton,
-  Title,
-} from './styled';
+import { Button, Container, GoBackButton, GoBackText, Subtitle, TextButton, Title } from './styled';
 import themes from '../../../themes/themes';
-import {SearchAddressModel} from '../../../services/searchAddress/models/SearchAddressModel';
-import {searchAddress} from '../../../services/searchAddress';
+import { SearchAddressModel } from '../../../services/searchAddress/models/SearchAddressModel';
+import { searchAddress } from '../../../services/searchAddress';
 
-const categoryList: Array<SelectListItemType> = [
-  {key: '1', value: 'Bateria'},
-  {key: '2', value: 'Computadores'},
-  {key: '3', value: 'Tablets'},
-  {key: '4', value: 'Teclados'},
-  {key: '5', value: 'Impressoras'},
-  {key: '6', value: 'Cameras fotograficas'},
-  {key: '7', value: 'Lampadas eletronicas'},
-  {key: '8', value: 'Aparelhos de som'},
-  {key: '9', value: 'Geladeira'},
-  {key: '10', value: 'Micro-ondas'},
+const categoryList: SelectListItemType[] = [
+  { key: '1', value: 'Bateria' },
+  { key: '2', value: 'Computadores' },
+  { key: '3', value: 'Tablets' },
+  { key: '4', value: 'Teclados' },
+  { key: '5', value: 'Impressoras' },
+  { key: '6', value: 'Cameras fotograficas' },
+  { key: '7', value: 'Lampadas eletronicas' },
+  { key: '8', value: 'Aparelhos de som' },
+  { key: '9', value: 'Geladeira' },
+  { key: '10', value: 'Micro-ondas' }
 ];
 
-const EnterpriseForm = ({navigation}: ScreenProps) => {
-  const {control, handleSubmit, formState} = useForm();
-  const {authentication} = useAuthentication();
+const EnterpriseForm = ({ navigation }: ScreenProps) => {
+  const { control, handleSubmit, formState } = useForm();
+  const { authentication } = useAuthentication();
 
   const [category, setCategory] = useState<string>('');
   const [addressComplete, setAddressComplete] = useState<SearchAddressModel>(
-    {} as SearchAddressModel,
+    {} as SearchAddressModel
   );
   const [loading, setLoading] = useState<boolean>(false);
 
@@ -65,11 +55,11 @@ const EnterpriseForm = ({navigation}: ScreenProps) => {
     debounce((cep: string) => {
       setAddressWithCep(cep);
     }, 800),
-    [],
+    []
   );
 
   function handleCategory(position: string) {
-    categoryList.map(item => {
+    categoryList.map((item) => {
       if (item.key === position) {
         setCategory(item.value);
       }
@@ -104,16 +94,14 @@ const EnterpriseForm = ({navigation}: ScreenProps) => {
           name="arrow-back-ios"
           size={20}
           color={themes.color.primary}
-          style={{marginVertical: 16, marginHorizontal: 10}}
+          style={{ marginVertical: 16, marginHorizontal: 10 }}
         />
         <GoBackText>Voltar</GoBackText>
       </GoBackButton>
 
       <Container>
         <Title>Cria sua conta!</Title>
-        <Subtitle>
-          Preencha os dados corretamente para registrar sua empresa :)
-        </Subtitle>
+        <Subtitle>Preencha os dados corretamente para registrar sua empresa :)</Subtitle>
 
         <InputForm
           placeholder="Nome da empresa"
@@ -147,7 +135,7 @@ const EnterpriseForm = ({navigation}: ScreenProps) => {
           control={control}
           formState={formState.errors.cep}
           nameId="cep"
-          onChangeText={text => {
+          onChangeText={(text) => {
             handleAddressComplete(text);
           }}
           marginBottom={10}
@@ -207,10 +195,7 @@ const EnterpriseForm = ({navigation}: ScreenProps) => {
           marginBottom={10}
         />
 
-        <Button
-          disabled={loading}
-          activeOpacity={0.7}
-          onPress={handleSubmit(onSubmit)}>
+        <Button disabled={loading} activeOpacity={0.7} onPress={handleSubmit(onSubmit)}>
           {loading ? (
             <ActivityIndicator size={20} color={themes.color.white} />
           ) : (

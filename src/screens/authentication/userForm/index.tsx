@@ -1,30 +1,22 @@
-import React, {useState} from 'react';
-import {ActivityIndicator, ScrollView} from 'react-native';
-import {useForm} from 'react-hook-form';
+import React, { useState } from 'react';
+import { ActivityIndicator, ScrollView } from 'react-native';
+import { useForm } from 'react-hook-form';
 
-import {ScreenProps} from '../../../router/models/ScreenPropsModel';
-import {InputForm} from '../../../components/InputForm';
-import {useAuthentication, User} from '../../../context/Authentication';
+import { ScreenProps } from '../../../router/models/ScreenPropsModel';
+import { InputForm } from '../../../components/InputForm';
+import { useAuthentication } from '../../../context/Authentication';
 
-import {createUser} from './repository';
-import {UserFormModel} from './models/UserFormModel';
+import { createUser } from './repository';
+import { UserFormModel } from './models/UserFormModel';
 
 import Icon from 'react-native-vector-icons/MaterialIcons';
 
-import {
-  Button,
-  Container,
-  GoBackButton,
-  GoBackText,
-  Subtitle,
-  TextButton,
-  Title,
-} from './styled';
+import { Button, Container, GoBackButton, GoBackText, Subtitle, TextButton, Title } from './styled';
 import themes from '../../../themes/themes';
 
-const UserForm = ({navigation}: ScreenProps) => {
-  const {control, handleSubmit, formState} = useForm();
-  const {authentication} = useAuthentication();
+const UserForm = ({ navigation }: ScreenProps) => {
+  const { control, handleSubmit, formState } = useForm();
+  const { authentication } = useAuthentication();
 
   const [loading, setLoading] = useState<boolean>(false);
 
@@ -51,16 +43,14 @@ const UserForm = ({navigation}: ScreenProps) => {
           name="arrow-back-ios"
           size={20}
           color={themes.color.primary}
-          style={{marginVertical: 16, marginHorizontal: 10}}
+          style={{ marginVertical: 16, marginHorizontal: 10 }}
         />
         <GoBackText>Voltar</GoBackText>
       </GoBackButton>
 
       <Container>
         <Title>Cria sua conta!</Title>
-        <Subtitle>
-          Preencha os dados corretamente para criar sua conta :)
-        </Subtitle>
+        <Subtitle>Preencha os dados corretamente para criar sua conta :)</Subtitle>
 
         <InputForm
           placeholder="Nome completo"

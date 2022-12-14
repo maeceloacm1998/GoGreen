@@ -1,7 +1,7 @@
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 
-import CheckBox, {CheckBoxProps} from '@react-native-community/checkbox';
-import {Container, Title} from './styles';
+import CheckBox, { CheckBoxProps } from '@react-native-community/checkbox';
+import { Container, Title } from './styles';
 import themes from '../../themes/themes';
 
 export interface CheckboxType extends CheckBoxProps {
@@ -16,14 +16,12 @@ export interface CheckboxType extends CheckBoxProps {
 
 const checkProps = (props: CheckboxType) => ({
   title: props.title ? props.title : 'default',
-  defaultValueCheckbox: props.defaultValueCheckbox
-    ? props.defaultValueCheckbox
-    : false,
+  defaultValueCheckbox: props.defaultValueCheckbox ? props.defaultValueCheckbox : false,
   onCheckedValue: props.onCheckedValue ? props.onCheckedValue : () => {},
   marginTop: props.marginTop ? props.marginTop : 0,
   marginBottom: props.marginBottom ? props.marginBottom : 0,
   marginLeft: props.marginLeft ? props.marginLeft : 0,
-  marginRight: props.marginRight ? props.marginRight : 0,
+  marginRight: props.marginRight ? props.marginRight : 0
 });
 
 const CheckboxComponent = (props: CheckboxType) => {
@@ -34,7 +32,7 @@ const CheckboxComponent = (props: CheckboxType) => {
     marginTop,
     marginBottom,
     marginLeft,
-    marginRight,
+    marginRight
   } = checkProps(props);
 
   const [toggleCheckBox, setToggleCheckBox] = useState(defaultValueCheckbox);
@@ -49,10 +47,10 @@ const CheckboxComponent = (props: CheckboxType) => {
       <CheckBox
         tintColors={{
           true: themes.color.primary_dark,
-          false: themes.color.text_color,
+          false: themes.color.text_color
         }}
         value={toggleCheckBox}
-        onValueChange={checked => {
+        onValueChange={(checked) => {
           onCheckedValue(checked, title);
           setToggleCheckBox(checked);
         }}

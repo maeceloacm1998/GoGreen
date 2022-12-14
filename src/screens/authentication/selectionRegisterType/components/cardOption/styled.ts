@@ -1,6 +1,6 @@
-import styled from "styled-components/native";
+import styled from 'styled-components/native';
 
-import themes from "../../../../../themes/themes";
+import themes from '../../../../../themes/themes';
 
 export const CardOptionS = styled.TouchableOpacity`
   width: 130px;
@@ -21,5 +21,5 @@ export const CardTitle = styled.Text`
   font-size: 16px;
   font-family: ${themes.fonts.jost_medium};
   font-weight: 700;
-  color: ${themes.color.text_color}
+  color: ${themes.color.text_color};
 `;

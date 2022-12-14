@@ -1,7 +1,7 @@
-import styled from "styled-components/native";
-import themes from "../../../../../themes/themes";
+import styled from 'styled-components/native';
+import themes from '../../../../../themes/themes';
 
-export type TitleProps = {
+export interface TitleProps {
   color?: string;
 }
 
@@ -12,13 +12,13 @@ export const HeaderContainer = styled.View`
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-`
+`;
 
 export const Title = styled.Text<TitleProps>`
   font-size: 16px;
   font-family: ${themes.fonts.roboto_regular};
   font-weight: 500;
-  color: ${props => props.color ? props.color : themes.color.text_color};
+  color: ${(props) => (props.color ? props.color : themes.color.text_color)};
 `;
 
 export const ClearButton = styled.TouchableOpacity``;

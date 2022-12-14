@@ -1,17 +1,18 @@
-import React, {useEffect, useState} from 'react';
-import {FlatList} from 'react-native';
+/* eslint-disable @typescript-eslint/no-unused-vars */
+/* eslint-disable @typescript-eslint/no-floating-promises */
+import React, { useEffect, useState } from 'react';
 
 import CardWithState from '../../../components/CardWithState';
 import Loading from '../../../components/Loading';
-import {useAuthentication} from '../../../context/Authentication';
+import { useAuthentication } from '../../../context/Authentication';
 
-import {ScheduleModel} from './models/ScheduleModel';
-import {fetchSchedule} from './repository';
+import { ScheduleModel } from './models/ScheduleModel';
+import { fetchSchedule } from './repository';
 
-import {Container, Subtitle, Title} from './styled';
+import { Container, Subtitle, Title } from './styled';
 
 const SchedulesList = () => {
-  const {user} = useAuthentication();
+  const { user } = useAuthentication();
   const [scheduleList, setScheduleList] = useState<Array<ScheduleModel>>();
   const [loading, setLoading] = useState<boolean>(false);
 
@@ -50,8 +51,8 @@ const SchedulesList = () => {
 
       <FlatList
         data={scheduleList}
-        renderItem={data => HandleCardWithState(data.item)}
-        keyExtractor={item => item.id}
+        renderItem={(data) => HandleCardWithState(data.item)}
+        keyExtractor={(item) => item.id}
         showsVerticalScrollIndicator={false}
         refreshing={loading}
         onRefresh={() => fetchScheduleList()}

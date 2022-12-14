@@ -1,27 +1,22 @@
+/* eslint-disable @typescript-eslint/no-floating-promises */
 import React from 'react';
-import {Keyboard, TouchableWithoutFeedback} from 'react-native';
-import {useForm} from 'react-hook-form';
+import { Keyboard, TouchableWithoutFeedback } from 'react-native';
+import { useForm } from 'react-hook-form';
 
-import {InputForm} from '../../../components/InputForm';
-import {ScreenProps} from '../../../router/models/ScreenPropsModel';
+import { InputForm } from '../../../components/InputForm';
+import { ScreenProps } from '../../../router/models/ScreenPropsModel';
 
 import ImagePNG from '../../../assets/images/plant_login.png';
 
-import {useAuthentication} from '../../../context/Authentication';
+import { useAuthentication } from '../../../context/Authentication';
 
-import {
-  ButtonDefault,
-  ButtonWithBorder,
-  Container,
-  Image,
-  TextButton,
-} from './styled';
+import { ButtonDefault, ButtonWithBorder, Container, Image, TextButton } from './styled';
 import themes from '../../../themes/themes';
 
-const Login = ({navigation}: ScreenProps) => {
+const Login = ({ navigation }: ScreenProps) => {
   const registerNavigation = () => navigation.navigate('SelectionRegisterType');
-  const {control, handleSubmit, formState} = useForm();
-  const {login} = useAuthentication();
+  const { control, handleSubmit, formState } = useForm();
+  const { login } = useAuthentication();
 
   function onSubmit(data: any) {
     const email = (data.email as string).toLowerCase().trim();
@@ -67,9 +62,7 @@ const Login = ({navigation}: ScreenProps) => {
         </ButtonDefault>
 
         <ButtonWithBorder activeOpacity={0.7} onPress={registerNavigation}>
-          <TextButton color={themes.color.primary}>
-            Não tem conta? Registre-se
-          </TextButton>
+          <TextButton color={themes.color.primary}>Não tem conta? Registre-se</TextButton>
         </ButtonWithBorder>
       </Container>
     </TouchableWithoutFeedback>

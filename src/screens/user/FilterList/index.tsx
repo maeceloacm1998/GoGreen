@@ -1,27 +1,26 @@
-import React, {useState, useEffect} from 'react';
-import {FlatList} from 'react-native';
+/* eslint-disable array-callback-return */
+/* eslint-disable @typescript-eslint/no-shadow */
+/* eslint-disable @typescript-eslint/no-floating-promises */
+import React, { useState, useEffect } from 'react';
+import { FlatList } from 'react-native';
 
 import Header from './components/Header';
 import GenericError from '../../../components/GenericError';
 import CheckboxComponent from '../../../components/Checkbox';
-import {getCategoryList} from './repository';
-import {ScreenProps} from '../../../router/models/ScreenPropsModel';
+import { getCategoryList } from './repository';
+import { ScreenProps } from '../../../router/models/ScreenPropsModel';
 
-import {Button, Container, TextButton, Title} from './styled';
+import { Button, Container, TextButton, Title } from './styled';
 import Loading from '../../../components/Loading';
-import {useFilterList} from '../../../context/FilterList';
+import { useFilterList } from '../../../context/FilterList';
 
-const FilterList = ({navigation}: ScreenProps) => {
+const FilterList = ({ navigation }: ScreenProps) => {
   const goBackListener = () => navigation.goBack();
 
-  const {
-    filterSelectedList,
-    addFilterSelectedList,
-    removeAllFilters,
-    isEmptyList,
-  } = useFilterList();
-  const [filterList, setFilterList] = useState<Array<string>>([]);
-  const [filterSelected, setFilterSelected] = useState<Array<string>>([]);
+  const { filterSelectedList, addFilterSelectedList, removeAllFilters, isEmptyList } =
+    useFilterList();
+  const [filterList, setFilterList] = useState<string[]>([]);
+  const [filterSelected, setFilterSelected] = useState<string[]>([]);
   const [loading, setLoading] = useState<boolean>(false);
   const [error, setError] = useState<boolean>(false);
 
@@ -46,7 +45,7 @@ const FilterList = ({navigation}: ScreenProps) => {
   function HandleCheckBox(title: string) {
     let checked = false;
     if (!isEmptyList()) {
-      filterSelectedList.map(item => {
+      filterSelectedList.map((item) => {
         if (!checked) checked = item === title;
       });
     }
@@ -57,7 +56,7 @@ const FilterList = ({navigation}: ScreenProps) => {
         defaultValueCheckbox={checked}
         onCheckedValue={(checked, value) => {
           if (checked) {
-            setFilterSelected(oldValue => [...oldValue, value]);
+            setFilterSelected((oldValue) => [...oldValue, value]);
           } else {
             removeChecked(value);
           }
@@ -69,12 +68,12 @@ const FilterList = ({navigation}: ScreenProps) => {
   }
 
   function removeChecked(title: string) {
-    const removeChecked = filterSelected.filter(item => item !== title);
+    const removeChecked = filterSelected.filter((item) => item !== title);
     setFilterSelected(removeChecked);
   }
 
-  function isEmptyCategoryList(filterList: Array<string>) {
-    if (filterList.length == 0) {
+  function isEmptyCategoryList(filterList: string[]) {
+    if (filterList.length === 0) {
       setError(true);
     } else {
       setError(false);
@@ -109,8 +108,8 @@ const FilterList = ({navigation}: ScreenProps) => {
 
           <FlatList
             data={filterList}
-            renderItem={data => HandleCheckBox(data.item)}
-            keyExtractor={item => item}
+            renderItem={(data) => HandleCheckBox(data.item)}
+            keyExtractor={(item) => item}
             showsVerticalScrollIndicator={false}
           />
           <Button activeOpacity={0.7} onPress={applyFiltersSelected}>

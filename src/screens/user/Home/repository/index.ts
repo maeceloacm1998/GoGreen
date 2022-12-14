@@ -1,6 +1,6 @@
 import { CompaniesListModel } from '../../../../models/CompaniesListModel';
-import {HttpRemoteAuthentication} from '../../../../services/api/data/usecases/http-remote-authentication';
-import {HttpClient} from '../../../../services/api/infra/usecases/http-client';
+import { HttpRemoteAuthentication } from '../../../../services/api/data/usecases/http-remote-authentication';
+import { HttpClient } from '../../../../services/api/infra/usecases/http-client';
 
 import { COMPANIES_LIST_PATH } from '../../../../services/constants';
 

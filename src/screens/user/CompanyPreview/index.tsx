@@ -1,26 +1,23 @@
-import React, {useEffect, useState} from 'react';
+/* eslint-disable @typescript-eslint/no-shadow */
+/* eslint-disable @typescript-eslint/no-floating-promises */
+import React, { useEffect, useState } from 'react';
 
 import HeaderComponent from './components/Header';
 import Maps from './components/Maps';
-import {fetchCompanyById} from './repository';
-import {CompaniesListModel} from '../../../models/CompaniesListModel';
+import { fetchCompanyById } from './repository';
+import { CompaniesListModel } from '../../../models/CompaniesListModel';
 
-import {ScreenProps} from '../../../router/models/ScreenPropsModel';
+import { ScreenProps } from '../../../router/models/ScreenPropsModel';
 
-import {
-  fetchLatLongWithAddress,
-  getLatLong,
-} from '../../../services/getLatLongWithAddress';
-import {LatLongModel} from '../../../services/getLatLongWithAddress/models/LatLongModel';
+import { fetchLatLongWithAddress, getLatLong } from '../../../services/getLatLongWithAddress';
+import { LatLongModel } from '../../../services/getLatLongWithAddress/models/LatLongModel';
 
-import {Container, ContainerData, Description, Title} from './styled';
+import { Container, ContainerData, Description, Title } from './styled';
 
-const CompanyPreview = ({route, navigation}: ScreenProps) => {
+const CompanyPreview = ({ route, navigation }: ScreenProps) => {
   const goBackListener = () => navigation.goBack();
 
-  const [company, setCompany] = useState<CompaniesListModel>(
-    {} as CompaniesListModel,
-  );
+  const [company, setCompany] = useState<CompaniesListModel>({} as CompaniesListModel);
   const [latLong, setLatLong] = useState<LatLongModel>({} as LatLongModel);
   const [loadingMap, setLoadingMap] = useState<boolean>(false);
 
@@ -62,11 +59,7 @@ const CompanyPreview = ({route, navigation}: ScreenProps) => {
           {`Rua Hidebrando de Oliveira, 235, ${company.city}, ${company.state}`}
         </Description>
 
-        <Maps
-          loading={loadingMap}
-          latitude={latLong.latitude}
-          longitude={latLong.longitude}
-        />
+        <Maps loading={loadingMap} latitude={latLong.latitude} longitude={latLong.longitude} />
       </ContainerData>
     </Container>
   );

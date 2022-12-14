@@ -1,7 +1,7 @@
 // COMPANY
-export const COMPANIES_LIST_PATH = "company/getall"
-export const SEARCH_COMPANIES_PATH = "company/search"
-export const REGISTER_COMPANY_PATH = "company/register"
+export const COMPANIES_LIST_PATH = 'company/getall';
+export const SEARCH_COMPANIES_PATH = 'company/search';
+export const REGISTER_COMPANY_PATH = 'company/register';
 
 // USER
 export const LOGIN_PATH = "Login"

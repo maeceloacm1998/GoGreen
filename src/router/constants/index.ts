@@ -1,4 +1,4 @@
-import { StackParamsList } from "../models/ScreenPropsModel";
+import { StackParamsList } from '../models/ScreenPropsModel';
 
 export const screensName: StackParamsList = {
   Home: "Home",

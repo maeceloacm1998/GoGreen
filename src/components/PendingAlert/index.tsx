@@ -2,7 +2,7 @@ import React from 'react';
 import Lottie from 'lottie-react-native';
 
 import Images from '../../assets//images/IconGoGreen.png';
-import {TitleText} from '../Card/styled';
+import { TitleText } from '../Card/styled';
 
 import Animation from '../../assets/animations/status.json';
 
@@ -14,10 +14,10 @@ import {
   Information,
   InformationContainer,
   StatusContainer,
-  StatusText,
+  StatusText
 } from './styled';
 
-export type PendingAlertType = {
+export interface PendingAlertType {
   image?: string;
   title?: string;
   address?: string;
@@ -27,7 +27,7 @@ export type PendingAlertType = {
   marginBottom?: number;
   marginLeft?: number;
   marginRight?: number;
-};
+}
 
 const checkProps = (props: PendingAlertType) => ({
   image: props.image ? props.image : Images,
@@ -38,7 +38,7 @@ const checkProps = (props: PendingAlertType) => ({
   marginTop: props.marginTop ? props.marginTop : 0,
   marginBottom: props.marginBottom ? props.marginBottom : 0,
   marginLeft: props.marginLeft ? props.marginLeft : 0,
-  marginRight: props.marginRight ? props.marginRight : 0,
+  marginRight: props.marginRight ? props.marginRight : 0
 });
 
 const PendingALert = (props: PendingAlertType) => {
@@ -51,7 +51,7 @@ const PendingALert = (props: PendingAlertType) => {
     marginTop,
     marginBottom,
     marginLeft,
-    marginRight,
+    marginRight
   } = checkProps(props);
 
   return (
@@ -70,12 +70,7 @@ const PendingALert = (props: PendingAlertType) => {
         </Information>
       </InformationContainer>
       <StatusContainer>
-        <Lottie
-          source={Animation}
-          autoPlay
-          loop
-          style={{width: 30, height: 30}}
-        />
+        <Lottie source={Animation} autoPlay loop style={{ width: 30, height: 30 }} />
         <StatusText>Pendente...</StatusText>
       </StatusContainer>
     </Container>

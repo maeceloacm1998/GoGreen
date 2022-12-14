@@ -9,5 +9,6 @@ export const screensName = {
   SelectionRegisterType: 'SelectionRegisterType',
   UserForm: 'UserForm',
   EnterpriseForm: 'EnterpriseForm',
-  ScheduleForm: 'ScheduleForm'
+  ScheduleForm: 'ScheduleForm',
+  SchedulePreview: 'SchedulePreview'
 };

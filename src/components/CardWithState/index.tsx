@@ -39,9 +39,10 @@ export const states = {
 const checkProps = (props: CardWithStateProps) => ({
   image: props.image ? props.image : Test,
   title: props.title ? props.title : 'default',
-  dtCreated: props.dtCreated ? props.dtCreated : 'default',
+  dtCreated: props.dtCreated ? props.dtCreated.substring(0, 16) : 'default',
   categoryText: props.categoryText ? props.categoryText : 'default',
   state: props.state ? props.state : states.finish,
+  onClick: props.onClick ? props.onClick : () => {},
   marginTop: props.marginTop ? props.marginTop : 0,
   marginBottom: props.marginBottom ? props.marginBottom : 0,
   marginLeft: props.marginLeft ? props.marginLeft : 0,
@@ -58,6 +59,7 @@ const CardWithState = (props: CardWithStateProps) => {
     marginRight,
     marginTop,
     state,
+    onClick,
     title
   } = checkProps(props);
 
@@ -82,6 +84,14 @@ const CardWithState = (props: CardWithStateProps) => {
     };
   }
 
+  function formatDate(date: string) {
+    var data = new Date(date),
+      dia = data.getDate().toString().padStart(2, '0'),
+      mes = (data.getMonth() + 1).toString().padStart(2, '0'), //+1 pois no getMonth Janeiro começa com zero.
+      ano = data.getFullYear();
+    return dia + '/' + mes + '/' + ano;
+  }
+
   function HandleState() {
     const stateResult = selectState();
     return (
@@ -100,14 +110,16 @@ const CardWithState = (props: CardWithStateProps) => {
   return (
     <CardContainer
       marginTop={marginTop}
+      onPress={onClick}
+      activeOpacity={0.9}
       marginBottom={marginBottom}
       marginLeft={marginLeft}
       marginRight={marginRight}>
       <Container>
-        <ImageCustom source={image} />
+        {/* <ImageCustom source={image} /> */}
         <ContainerData>
           <TitleText>{title}</TitleText>
-          <AddressText>{dtCreated}</AddressText>
+          <AddressText>{formatDate(dtCreated)}</AddressText>
           <CategoryText>{categoryText}</CategoryText>
         </ContainerData>
       </Container>

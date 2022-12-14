@@ -20,7 +20,7 @@ import {
   Title
 } from './styled';
 import SelectListComponent from '../../../components/SelectList';
-import { categoryList } from '../enterpriseForm';
+import { categoryList } from '../EnterpriseForm';
 import { useAuthentication } from '../../../context/Authentication';
 import { createSchedule } from './repository';
 
@@ -68,6 +68,7 @@ const ScheduleForm = ({ navigation, route }: ScheduleFormProps) => {
     };
 
     await createSchedule(newSchedule);
+    handleGoBackButtonPress();
   };
 
   return (

@@ -19,4 +19,12 @@ export class HttpRemoteAuthentication implements Authentication {
 
     return await this.httpClient.post(path, body);
   }
+
+  async put(path: string, body: any): Promise<any> {
+    if (path.length == 0) {
+      console.error('Path não encontrado');
+    }
+
+    return await this.httpClient.put(path, body);
+  }
 }

@@ -4,6 +4,7 @@ import { NavigationContainer } from '@react-navigation/native';
 
 import AuthenticationNavigator from './main.routes';
 import UserNavigator from './user.routes';
+import CompanyNavigator from './company.routes';
 import { useAuthentication } from '../context/Authentication';
 
 export default function Navigation() {
@@ -15,7 +16,7 @@ export default function Navigation() {
         {loggedUser ? (
           <UserNavigator />
         ) : loggedCompany ? (
-          <AuthenticationNavigator />
+          <CompanyNavigator />
         ) : (
           <AuthenticationNavigator />
         )}

@@ -25,23 +25,23 @@ const CompanyPreview = ({ route, navigation }: CompanyPreviewProps) => {
   const [loadingMap, setLoadingMap] = useState<boolean>(false);
 
   useEffect(() => {
-    fetchLatLogProps();
     fetchCompanyInformation();
   }, []);
 
   async function fetchCompanyInformation() {
     const res = await fetchCompanyById(route.params?.id);
     setCompany(res);
+    fetchLatLogProps(res.address);
   }
 
   const clickRegisterVisitListener = () => {
     navigation.navigate('ScheduleForm', { idCompany: route.params?.id });
   };
 
-  async function fetchLatLogProps() {
+  async function fetchLatLogProps(address: string) {
     setLoadingMap(true);
-    const latLong = await fetchLatLongWithAddress('hildebrando de oliveira', 235);
-    setLatLong(getLatLong('Hildebrando De Oliveira 235', latLong));
+    const latLong = await fetchLatLongWithAddress(address);
+    setLatLong(getLatLong(address, latLong));
     setLoadingMap(false);
   }
 
@@ -64,7 +64,7 @@ const CompanyPreview = ({ route, navigation }: CompanyPreviewProps) => {
         </Title>
 
         <Description marginBottom={10}>
-          {`Rua Hidebrando de Oliveira, 235, ${company.city}, ${company.state}`}
+          {`${company.address}, ${company.city}, ${company.state}`}
         </Description>
 
         <Maps loading={loadingMap} latitude={latLong.latitude} longitude={latLong.longitude} />

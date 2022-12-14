@@ -13,6 +13,7 @@ export interface StackParamsList extends ParamListBase {
   UserForm: any;
   EnterpriseForm: any;
   ScheduleForm: any;
+  SchedulePreview: any;
 }
 
 export type ScreenNavigationProp = StackNavigationProp<StackParamsList>;

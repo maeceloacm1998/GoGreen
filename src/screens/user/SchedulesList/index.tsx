@@ -1,9 +1,11 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 /* eslint-disable @typescript-eslint/no-floating-promises */
 import React, { useEffect, useState } from 'react';
+import { FlatList } from 'react-native';
 
 import CardWithState from '../../../components/CardWithState';
 import Loading from '../../../components/Loading';
+import { useAuthentication } from '../../../context/Authentication';
 
 import { ScheduleModel } from './models/ScheduleModel';
 import { fetchSchedule } from './repository';
@@ -11,7 +13,8 @@ import { fetchSchedule } from './repository';
 import { Container, Subtitle, Title } from './styled';
 
 const SchedulesList = () => {
-  const [scheduleList, setScheduleList] = useState<ScheduleModel[]>();
+  const { user } = useAuthentication();
+  const [scheduleList, setScheduleList] = useState<Array<ScheduleModel>>();
   const [loading, setLoading] = useState<boolean>(false);
 
   useEffect(() => {
@@ -20,19 +23,19 @@ const SchedulesList = () => {
 
   async function fetchScheduleList() {
     setLoading(true);
-    const res = await fetchSchedule();
+    const res = await fetchSchedule(user.id.toString());
     setScheduleList(res);
 
     setLoading(false);
   }
 
-  function HandleCardWithState(props: any) {
+  function HandleCardWithState(props: ScheduleModel) {
     return (
       <CardWithState
         key={props.id}
-        title={props.name}
+        title={props.product}
         dtCreated={props.dtCreated}
-        state={props.state}
+        state={props.statusScheduling}
         categoryText={props.category}
         image={''}
         marginTop={12}
@@ -44,17 +47,17 @@ const SchedulesList = () => {
     <Loading />
   ) : (
     <Container>
-      <Title>Agendamentos</Title>
+      <Title>Agendamentos {}</Title>
       <Subtitle>Todos os agendamentos realizados por você :)</Subtitle>
 
-      {/* <FlatList
+      <FlatList
         data={scheduleList}
-        renderItem={data => HandleCardWithState(data.item)}
-        keyExtractor={item => item.id}
+        renderItem={(data) => HandleCardWithState(data.item)}
+        keyExtractor={(item) => item.id}
         showsVerticalScrollIndicator={false}
-      /> */}
-
-      <HandleCardWithState />
+        refreshing={loading}
+        onRefresh={() => fetchScheduleList()}
+      />
     </Container>
   );
 };

@@ -8,7 +8,7 @@ export interface ContainerCard {
   marginRight: number;
 }
 
-export const CardContainer = styled.View<ContainerCard>`
+export const CardContainer = styled.TouchableOpacity<ContainerCard>`
   background-color: ${themes.color.white};
   flex-direction: row;
   justify-content: space-between;

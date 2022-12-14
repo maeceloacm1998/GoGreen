@@ -5,12 +5,9 @@ import { BASE_URL, SEPARATOR_SPACE } from './constants';
 import { LatLongModel } from './models/LatLongModel';
 import { FeaturesItem, LatLongResponseModel } from './models/LatLongResponseModel';
 
-export async function fetchLatLongWithAddress(
-  address: string,
-  number: number
-): Promise<LatLongResponseModel> {
+export async function fetchLatLongWithAddress(address: string): Promise<LatLongResponseModel> {
   const addressResult = convertAddress(address);
-  const url = `${BASE_URL}q=${number}+${addressResult}+Brazil&format=geojson`;
+  const url = `${BASE_URL}q=${addressResult}+Brazil&format=geojson`;
 
   return await fetch(url)
     // eslint-disable-next-line @typescript-eslint/promise-function-async

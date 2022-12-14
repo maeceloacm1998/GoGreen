@@ -3,6 +3,7 @@ import {FlatList} from 'react-native';
 
 import CardWithState from '../../../components/CardWithState';
 import Loading from '../../../components/Loading';
+import {useAuthentication} from '../../../context/Authentication';
 
 import {ScheduleModel} from './models/ScheduleModel';
 import {fetchSchedule} from './repository';
@@ -10,6 +11,7 @@ import {fetchSchedule} from './repository';
 import {Container, Subtitle, Title} from './styled';
 
 const SchedulesList = () => {
+  const {user} = useAuthentication();
   const [scheduleList, setScheduleList] = useState<Array<ScheduleModel>>();
   const [loading, setLoading] = useState<boolean>(false);
 
@@ -19,7 +21,7 @@ const SchedulesList = () => {
 
   async function fetchScheduleList() {
     setLoading(true);
-    const res = await fetchSchedule();
+    const res = await fetchSchedule(user.id.toString());
     setScheduleList(res);
 
     setLoading(false);
@@ -43,7 +45,7 @@ const SchedulesList = () => {
     <Loading />
   ) : (
     <Container>
-      <Title>Agendamentos</Title>
+      <Title>Agendamentos {}</Title>
       <Subtitle>Todos os agendamentos realizados por você :)</Subtitle>
 
       <FlatList

@@ -37,7 +37,7 @@ const UserForm = ({navigation}: ScreenProps) => {
     try {
       setLoading(true);
       const userCreated = await createUser(user);
-      authentication(userCreated, 'User');
+      authentication(userCreated, 'user');
     } catch (e) {
       console.log(e);
       setLoading(false);

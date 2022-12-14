@@ -36,11 +36,8 @@ const CompanyPreview = ({route, navigation}: ScreenProps) => {
 
   async function fetchLatLogProps() {
     setLoadingMap(true);
-    const latLong = await fetchLatLongWithAddress(
-      'hildebrando de oliveira',
-      235,
-    );
-    setLatLong(getLatLong('Hildebrando De Oliveira 235', latLong));
+    const latLong = await fetchLatLongWithAddress(company.address);
+    setLatLong(getLatLong(company.address, latLong));
     setLoadingMap(false);
   }
 

@@ -10,10 +10,9 @@ import {
 
 export async function fetchLatLongWithAddress(
   address: string,
-  number: number,
 ): Promise<LatLongResponseModel> {
   const addressResult = convertAddress(address);
-  const url = `${BASE_URL}q=${number}+${addressResult}+Brazil&format=geojson`;
+  const url = `${BASE_URL}q=${addressResult}+Brazil&format=geojson`;
 
   console.log('REQUEST --->', url);
   return await fetch(url)

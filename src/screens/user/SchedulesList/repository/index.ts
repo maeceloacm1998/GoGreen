@@ -6,7 +6,7 @@ import {ScheduleModel} from '../models/ScheduleModel';
 
 const httpClient = new HttpRemoteAuthentication(new HttpClient());
 
-export async function fetchSchedule(): Promise<Array<ScheduleModel>> {
-  const request = await httpClient.get(SCHEDULING_LIST_PATH);
-  return request;
+export async function fetchSchedule(userId: string): Promise<Array<ScheduleModel>> {
+  const request: Array<ScheduleModel> = await httpClient.get(SCHEDULING_LIST_PATH);
+  return request.filter((item) => {return item.idUsuario.toString() === userId})
 }

@@ -64,6 +64,7 @@ export const AuthenticationProvider = ({children}: any) => {
       setUser(body as User);
       setLoggedUser(true);
     } else {
+      console.log('company', body);
       setCompany(body as Company);
       setLoggedCompany(true);
     }

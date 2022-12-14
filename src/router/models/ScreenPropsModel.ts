@@ -19,4 +19,5 @@ export type StackParamsList = {
   SelectionRegisterType: any;
   UserForm: any;
   EnterpriseForm: any;
+  SchedulePreview: any;
 };

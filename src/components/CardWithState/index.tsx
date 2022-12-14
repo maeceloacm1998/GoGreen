@@ -42,6 +42,7 @@ const checkProps = (props: CardWithStateProps) => ({
   dtCreated: props.dtCreated ? props.dtCreated.substring(0, 16) : 'default',
   categoryText: props.categoryText ? props.categoryText : 'default',
   state: props.state ? props.state : states.finish,
+  onClick: props.onClick ? props.onClick : () => {},
   marginTop: props.marginTop ? props.marginTop : 0,
   marginBottom: props.marginBottom ? props.marginBottom : 0,
   marginLeft: props.marginLeft ? props.marginLeft : 0,
@@ -58,6 +59,7 @@ const CardWithState = (props: CardWithStateProps) => {
     marginRight,
     marginTop,
     state,
+    onClick,
     title,
   } = checkProps(props);
 
@@ -108,6 +110,8 @@ const CardWithState = (props: CardWithStateProps) => {
   return (
     <CardContainer
       marginTop={marginTop}
+      onPress={onClick}
+      activeOpacity={0.9}
       marginBottom={marginBottom}
       marginLeft={marginLeft}
       marginRight={marginRight}>

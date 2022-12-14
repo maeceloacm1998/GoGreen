@@ -10,5 +10,6 @@ export const screensName: StackParamsList = {
   Login: "Login",
   SelectionRegisterType: "SelectionRegisterType",
   UserForm: "UserForm",
-  EnterpriseForm: "EnterpriseForm"
+  EnterpriseForm: "EnterpriseForm",
+  SchedulePreview: "SchedulePreview"
 }

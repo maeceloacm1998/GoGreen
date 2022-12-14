@@ -21,7 +21,7 @@ import themes from '../../../themes/themes';
 import { SearchAddressModel } from '../../../services/searchAddress/models/SearchAddressModel';
 import { searchAddress } from '../../../services/searchAddress';
 
-const categoryList: SelectListItemType[] = [
+export const categoryList: SelectListItemType[] = [
   { key: '1', value: 'Bateria' },
   { key: '2', value: 'Computadores' },
   { key: '3', value: 'Tablets' },

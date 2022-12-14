@@ -1,12 +1,14 @@
 import React from 'react';
 import { createStackNavigator } from '@react-navigation/stack';
 
-import Login from '../screens/authentication/Login';
-import SelectionRegisterType from '../screens/authentication/SelectionRegisterType';
-import UserForm from '../screens/authentication/UserForm';
-import EnterpriseForm from '../screens/authentication/EnterpriseForm';
+import Login from '../screens/authentication/login';
+import SelectionRegisterType from '../screens/authentication/selectionRegisterType';
+import UserForm from '../screens/authentication/userForm';
+import EnterpriseForm from '../screens/authentication/enterpriseForm';
+import ScheduleForm from '../screens/authentication/scheduleForm';
+import { StackParamsList } from './models/ScreenPropsModel';
 
-const Stack = createStackNavigator();
+const Stack = createStackNavigator<StackParamsList>();
 
 function MainRoute() {
   return (
@@ -35,6 +37,13 @@ function MainRoute() {
       <Stack.Screen
         name="EnterpriseForm"
         component={EnterpriseForm}
+        options={{
+          headerShown: false
+        }}
+      />
+      <Stack.Screen
+        name="ScheduleForm"
+        component={ScheduleForm}
         options={{
           headerShown: false
         }}

@@ -1,14 +1,7 @@
 import { ParamListBase, RouteProp } from '@react-navigation/native';
 import { StackNavigationProp } from '@react-navigation/stack';
 
-export type ScreenNavigationProp = StackNavigationProp<StackParamsList>;
-export type ParamsNavigationProp = ParamListBase;
-export interface ScreenProps {
-  navigation: ScreenNavigationProp;
-  route: RouteProp<ParamsNavigationProp>;
-}
-
-export interface StackParamsList {
+export interface StackParamsList extends ParamListBase {
   InitialRouteUser: any;
   Home: any;
   Schedule: any;
@@ -19,4 +12,12 @@ export interface StackParamsList {
   SelectionRegisterType: any;
   UserForm: any;
   EnterpriseForm: any;
+  ScheduleForm: { companyId: string };
+}
+
+export type ScreenNavigationProp = StackNavigationProp<StackParamsList>;
+export type ParamsNavigationProp = ParamListBase;
+export interface ScreenProps {
+  navigation: ScreenNavigationProp;
+  route: RouteProp<ParamsNavigationProp>;
 }

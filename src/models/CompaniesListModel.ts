@@ -4,7 +4,7 @@ export interface CompaniesListModel {
   image: string;
   city: string;
   state: string;
-  address:string;
+  address: string;
   date: string;
   category: string;
   description: string;

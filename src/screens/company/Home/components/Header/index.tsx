@@ -1,19 +1,19 @@
 import React from 'react';
-import {TouchableOpacity} from 'react-native-gesture-handler';
+import { TouchableOpacity } from 'react-native-gesture-handler';
 
 import Icon from 'react-native-vector-icons/Ionicons';
 
-import {useAuthentication} from '../../../../../context/Authentication';
+import { useAuthentication } from '../../../../../context/Authentication';
 import themes from '../../../../../themes/themes';
 
-import {HeaderContainer, UserNameDark, UserNameLight} from './styled';
+import { HeaderContainer, UserNameDark, UserNameLight } from './styled';
 
 export type HeaderType = {
   username: string;
 };
 
-const Header = ({username}: HeaderType) => {
-  const {logout} = useAuthentication();
+const Header = ({ username }: HeaderType) => {
+  const { logout } = useAuthentication();
 
   function firstName(): string {
     return username.split(' ')[0].toString();

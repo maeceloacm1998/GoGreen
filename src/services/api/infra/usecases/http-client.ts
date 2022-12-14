@@ -38,12 +38,12 @@ export class HttpClient implements Authentication {
   async put(path: string, body: any): Promise<any> {
     let response: any = null;
 
-    try{ 
-      response = await this.instanceClient.put(path, body)
-    } catch(err) {
-      console.error(err)
+    try {
+      response = await this.instanceClient.put(path, body);
+    } catch (err) {
+      console.error(err);
     }
 
-    return response
+    return response;
   }
 }

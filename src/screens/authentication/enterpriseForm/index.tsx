@@ -71,7 +71,7 @@ const EnterpriseForm = ({ navigation }: ScreenProps) => {
       ...data,
       address: addressComplete.logradouro,
       city: addressComplete.localidade,
-      cep: addressComplete.cep,
+      cep: addressComplete.cep
     };
     handleCreateUser(userModel, category);
   }

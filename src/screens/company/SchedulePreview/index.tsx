@@ -1,5 +1,5 @@
-import React, {useEffect, useState} from 'react';
-import {ScrollView, Text, TouchableOpacity} from 'react-native';
+import React, { useEffect, useState } from 'react';
+import { ScrollView, Text, TouchableOpacity } from 'react-native';
 
 import Icon from 'react-native-vector-icons/MaterialIcons';
 
@@ -9,17 +9,13 @@ import Cancel from '../../../assets/animations/status_cancel.json';
 import Finish from '../../../assets/animations/status_success.json';
 import Lottie from 'lottie-react-native';
 
-import {User} from '../../../context/Authentication';
+import { User } from '../../../context/Authentication';
 
-import {ScreenProps} from '../../../router/models/ScreenPropsModel';
+import { ScreenProps } from '../../../router/models/ScreenPropsModel';
 import themes from '../../../themes/themes';
-import {ScheduleModel} from '../../user/SchedulesList/models/ScheduleModel';
-import {states} from './constants';
-import {
-  getScheduleItemPerId,
-  getClientPerId,
-  updateSchedule,
-} from './repository';
+import { ScheduleModel } from '../../user/SchedulesList/models/ScheduleModel';
+import { states } from './constants';
+import { getScheduleItemPerId, getClientPerId, updateSchedule } from './repository';
 import {
   Container,
   ContainerCancelButton,
@@ -31,7 +27,7 @@ import {
   SubTitle,
   Tag,
   TextButton,
-  Title,
+  Title
 } from './styled';
 import Loading from '../../../components/Loading';
 
@@ -40,10 +36,8 @@ export type State = {
   name: string;
 };
 
-const SchedulePreview = ({route, navigation}: ScreenProps) => {
-  const [scheduleItem, setScheduleItem] = useState<ScheduleModel>(
-    {} as ScheduleModel,
-  );
+const SchedulePreview = ({ route, navigation }: ScreenProps) => {
+  const [scheduleItem, setScheduleItem] = useState<ScheduleModel>({} as ScheduleModel);
   const [client, setClient] = useState<User>({} as User);
 
   const [loading, setLoading] = useState<boolean>(false);
@@ -70,20 +64,20 @@ const SchedulePreview = ({route, navigation}: ScreenProps) => {
     if (status.toLowerCase() === states.inProgress.toLowerCase()) {
       return {
         icon: JSON.stringify(InProgress),
-        name: states.inProgress,
+        name: states.inProgress
       };
     }
 
     if (status.toLowerCase() === states.cancel.toLowerCase()) {
       return {
         icon: JSON.stringify(Cancel),
-        name: states.cancel,
+        name: states.cancel
       };
     }
 
     return {
       icon: JSON.stringify(Finish),
-      name: states.finish,
+      name: states.finish
     };
   }
 
@@ -95,7 +89,7 @@ const SchedulePreview = ({route, navigation}: ScreenProps) => {
           source={JSON.parse(stateResult.icon)}
           autoPlay
           loop
-          style={{width: 30, height: 30}}
+          style={{ width: 30, height: 30 }}
         />
         <StatusText>{stateResult.name}</StatusText>
       </StatusContainer>
@@ -109,7 +103,7 @@ const SchedulePreview = ({route, navigation}: ScreenProps) => {
   async function cancelSchedule() {
     const newScheduleItem: ScheduleModel = {
       ...scheduleItem,
-      statusScheduling: states.cancel,
+      statusScheduling: states.cancel
     };
     await updateSchedule(newScheduleItem);
     fetchScheduleItem();
@@ -118,7 +112,7 @@ const SchedulePreview = ({route, navigation}: ScreenProps) => {
   async function confirmSchedule() {
     const newScheduleItem: ScheduleModel = {
       ...scheduleItem,
-      statusScheduling: states.finish,
+      statusScheduling: states.finish
     };
     await updateSchedule(newScheduleItem);
   }
@@ -132,7 +126,7 @@ const SchedulePreview = ({route, navigation}: ScreenProps) => {
           <Icon
             name="arrow-back-ios"
             size={18}
-            style={{marginLeft: 5}}
+            style={{ marginLeft: 5 }}
             color={themes.color.text_color}
           />
         </TouchableOpacity>

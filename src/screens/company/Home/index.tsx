@@ -1,28 +1,26 @@
-import React, {useState, useEffect} from 'react';
-import {FlatList} from 'react-native';
+import React, { useState, useEffect } from 'react';
+import { FlatList } from 'react-native';
 
 import Header from './components/Header';
-import {getSchedulingListCompany} from './repository';
+import { getSchedulingListCompany } from './repository';
 
-import {ScreenProps} from '../../../router/models/ScreenPropsModel';
+import { ScreenProps } from '../../../router/models/ScreenPropsModel';
 
-import {Container, HeaderText, TitleDark, TitleLight} from './styled';
+import { Container, HeaderText, TitleDark, TitleLight } from './styled';
 import Loading from '../../../components/Loading';
-import {useAuthentication} from '../../../context/Authentication';
-import {ScheduleModel} from '../../user/SchedulesList/models/ScheduleModel';
+import { useAuthentication } from '../../../context/Authentication';
+import { ScheduleModel } from '../../user/SchedulesList/models/ScheduleModel';
 import CardWithState from '../../../components/CardWithState';
 
-const HomeCompany = ({navigation}: ScreenProps) => {
+const HomeCompany = ({ navigation }: ScreenProps) => {
   const navigateFilterList = () => navigation.navigate('FilterList');
 
-  const {company} = useAuthentication();
+  const { company } = useAuthentication();
 
   const [loading, setLoading] = useState<boolean>(false);
   const [error, setError] = useState<boolean>(false);
 
-  const [schedulingList, setSchedulingList] = useState<Array<ScheduleModel>>(
-    [],
-  );
+  const [schedulingList, setSchedulingList] = useState<Array<ScheduleModel>>([]);
 
   useEffect(() => {
     fetchSchedulingList();
@@ -71,7 +69,7 @@ const HomeCompany = ({navigation}: ScreenProps) => {
         onClick={() =>
           navigation.navigate('SchedulePreview', {
             id: props.id,
-            userId: props.idUsuario,
+            userId: props.idUsuario
           })
         }
         image={''}
@@ -90,8 +88,8 @@ const HomeCompany = ({navigation}: ScreenProps) => {
 
       <FlatList
         data={schedulingList}
-        renderItem={data => HandleCard(data.item)}
-        keyExtractor={item => item.id}
+        renderItem={(data) => HandleCard(data.item)}
+        keyExtractor={(item) => item.id}
         showsVerticalScrollIndicator={false}
         onRefresh={() => fetchSchedulingList()}
         refreshing={loading}

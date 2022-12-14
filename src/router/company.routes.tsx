@@ -1,7 +1,7 @@
 import React from 'react';
-import {createStackNavigator} from '@react-navigation/stack';
+import { createStackNavigator } from '@react-navigation/stack';
 
-import {FilterListProviderHook} from '../context';
+import { FilterListProviderHook } from '../context';
 
 import HomeCompany from '../screens/company/Home';
 import SchedulePreview from '../screens/company/SchedulePreview';
@@ -16,14 +16,14 @@ function CompanyRoutes() {
           name="HomeCompany"
           component={HomeCompany}
           options={{
-            headerShown: false,
+            headerShown: false
           }}
         />
         <Stack.Screen
           name="SchedulePreview"
           component={SchedulePreview}
           options={{
-            headerShown: false,
+            headerShown: false
           }}
         />
       </Stack.Navigator>

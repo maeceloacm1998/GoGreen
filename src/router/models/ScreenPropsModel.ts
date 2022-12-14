@@ -20,4 +20,4 @@ export interface StackParamsList {
   UserForm: any;
   EnterpriseForm: any;
   SchedulePreview: any;
-};
+}
